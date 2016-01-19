@@ -1,0 +1,43 @@
+{{#if photo}}
+<div class="form-group photo-info" id="{{id}}">
+	<div class="row photo-description">
+		<div class="col-lg-4">
+		<div class="gray case-title-photo"><span class="ft14">照片描述</span><a href="javascript:void(0)" class="del-photo">删除该照片</a></div>
+			<input type="text" name="name-{{id}}" class="form-control" data-validate="{rules:{required: true}}">
+		</div>
+		<div class="col-lg-8">
+			<div class="media panel-upload">
+				<div class="media-left"><img class="photo-url-{{id}}" src="http://{{staticDomainUrl '/images/img-139x104-2015-12-24.png'}}" alt=""></div>
+				<div class="media-body">
+					<input type="button" value="选择照片" class="btn btn-default">
+					<input type="file" class="input-file" name="jobPhoto" id="upload-{{id}}">
+					<input type="text" name="photo-{{id}}" class="img-tips img-tips-{{id}}" data-validate="{rules:{required: true},messages:{required:'请上传照片'}}">
+					<p class="form-control-static ft14">支持jpg、gif、png格式，最大3M；<br>要求关键信息清晰可见。</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{/if}}
+{{#if Case}}
+	{{#is Case "===" "link"}}
+	<div class="case-item" id="{{id}}">
+		<div class="case-title gray">案例 <a href="javascript:void(0)" class="js-del-case">删除该案例</a></div>
+		<div class="case-con">
+			<input type="text" class="form-control" placeholder="标题" value="" name="caseTitle_{{index}}" data-validate="{rules:{maxlength:128,required:true},messages:{maxlength:'标题超长',required:'请填写标题'}}">
+			<input type="text" class="form-control" placeholder="链接" value="" name="caseLink_{{index}}" data-validate="{rules:{required:true,url:true,maxlength:256},messages:{url: '请正确填写链接地址',maxlength:'链接地址超长',required:'请填写链接地址'}}">
+			<input type="hidden" name="caseDescription_{{index}}" value="">
+		</div>
+	</div>
+	{{/is}}
+	{{#is Case "===" "text"}}
+	<div class="case-item" id="{{id}}">
+		<div class="case-title gray">案例 <a href="javascript:void(0)" class="js-del-case">删除该案例</a></div>
+		<div class="case-con">
+			<input type="text" class="form-control" placeholder="标题" value="" name="caseTitle_{{index}}" data-validate="{rules:{maxlength:128,required:true},messages:{maxlength:'标题超长',required:'请填写标题'}}">
+			<textarea class="form-control" placeholder="文本" name="caseDescription_{{index}}" rows="3" data-validate="{rules:{maxlength:2048,required:true},messages:{maxlength:'文本超长',required:'请填写文本'}}"></textarea>
+			<input type="hidden" name="caseLink_{{index}}" value="">
+		</div>
+	</div>
+	{{/is}}
+{{/if}}

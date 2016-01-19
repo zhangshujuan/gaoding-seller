@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/dev/css/app.css">
+    <script type="text/javascript" src="/dev/scripts/lib/sea.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/dev/original/html5shiv/html5shiv.js"></script>
+      <script src="/dev/original/respondjs/respond.js"></script>
+    <![endif]-->
+    <script type="text/javascript">window.HEALTH = {assetsPath:"/dev"}</script>
+    <script type="text/javascript" src="/dev/scripts/lib/config.js"></script>
+</head>	
+<body>
+<!-- begain导航 -->
+<nav class="navbar navbar-default seller-nav">
+	<div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand logo" href="#"><img src="/images/logo_20151223_93x28.png" alt="赞服务"></a>
+	      <span class="navbar-brand logo_text"><img src="/images/logotext_20151223_135x18.png" alt=""></span>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav navbar-right seller-navlist">
+	        <li><a href="#">订单</a></li>
+	        <li><a href="#">卖家中心</a></li>
+	        <li><a href="#">张三</a></li>
+	        <li><a href="#">退出</a></li>
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle seller-wxg" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="iconfont">&#xe639;</i>  微信公众号</a>
+	          <div class="dropdown-menu">
+	        	额我们
+	          </div>
+	        </li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav>
+<!-- end导航 -->
+<div class="seller-main">
+	<div class="seller-wrap clearfix">
+		<div class="seller-subnav list-group pull-left">
+			<div class="list-group-item seller-title text-center">
+				<i class="iconfont">&#xe60d;</i><br>
+				<span>卖家中心</span>
+			</div>
+			<a href="#" class="list-group-item">
+				我要开店
+			</a>
+			<a href="#" class="list-group-item on">
+				职业信息
+			</a>
+			<a href="#" class="list-group-item">
+				实名信息
+			</a>
+		</div>
+		<div class="seller-content pull-right approve-contain">			
+			<div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default panel-common">
+                        <div class="panel-heading">
+                        	<div class="pull-left">职业信息</div>
+                        	<div class="pull-right row"><span class="required pull-left">*</span><span class="pull-left ft14">必填项</span></div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form role="form" id="job-approve-form">
+                                    	<div class="row"> 
+	                                        <div class="form-group pull-left mr60">
+	                                        	<div class="row">
+	                                				<span class="required pull-left">*</span>
+	                                				<label>从事行业</label>
+	                                    		</div>
+	                                            <select class="form-control lg-width">
+	                                                <option>1</option>
+	                                                <option>2</option>
+	                                                <option>3</option>
+	                                                <option>4</option>
+	                                                <option>5</option>
+	                                            </select>
+	                                        </div>
+	                                        <div class="form-group pull-left">
+	                                            <div class="row">
+	                                				<span class="required pull-left">*</span>
+	                                				<label>从事年限</label>
+	                                    		</div>
+	                                    		<input class="form-control form-age">
+	                                        </div>
+                                        </div>                                        
+                                        <hr class="hr-dashed">
+                                        <div class="form-group">
+                                            <div class="row">
+                                				<span class="required pull-left">*</span>
+                                				<label>当前公司</label>
+                                    		</div>
+                                            <input class="form-control input-company">
+                                        </div>
+                                        <hr class="hr-dashed">
+                                        <div class="form-group">
+                                            <div class="row">
+                                				<span class="required pull-left">*</span>
+                                				<label>当前职位</label>
+                                    		</div>
+                                            <input class="form-control lg-width">
+                                        </div>
+                                        <hr class="hr-dashed">
+                                        <div class="form-group">
+                                            <div class="row">
+                                				<span class="required pull-left">*</span>
+                                				<label>擅长领域</label>
+                                    		</div>
+                                            <input type="text" class="form-control input-company" id="input-tags" placeholder="#营销策划    #品牌推广" name="n6">
+                                        </div>
+                                        <hr class="hr-dashed">
+                                        <div class="form-group">
+                                            <div class="row">
+                                				<span class="required pull-left">*</span>
+                                				<label>卖家介绍</label>
+                                    		</div>
+                                            <textarea class="form-control textarea-resumes"></textarea>
+                                        </div>
+                                        <hr class="hr-dashed">
+                                        <div class="form-group">
+                                            <div class="row photos-attached">
+                                				<label class="pull-left">相关照片</label>
+                                				<span class="ft14 pull-left">您可以上传任何可以证明您个人能力的照片，包括但不限于工牌、名片、专业证书、获奖证书以及荣誉照片等。<br>最多可以上传3张，照片越多，通过审核的速度越快。<br>该照片仅赞服务审核人员可见。</span>
+                                    		</div>
+                                        </div>
+                                        <div class="photo-info">
+	                                        <div class="form-group">
+	                                        	<div class="row photo-description">
+	                                        		<div class="col-lg-4">
+	                                        			<p class="help-block">照片描述</p>
+	                                            		<input class="form-control lg-width">
+	                                        		</div>
+	                                        		<div class="col-lg-8">
+	                                        			<div class="media panel-upload">
+															<div class="media-left"><img src="/images/img-139x104-2015-12-24.png" alt=""></div>
+															<div class="media-body">
+																<input type="button" value="选择照片" class="btn btn-default">
+																<input type="file" class="input-file" id="upload">
+																<p class="form-control-static ft14">支持jpg、gif、png格式，最大3M；<br>要求关键信息清晰可见。</p>
+															</div>
+														</div>
+	                                        		</div>
+	                                        	</div>
+	                                        </div>
+                                        </div>
+                                        <input type="button" value="新增照片" class="btn btn-default add-photo">
+                                        <hr class="hr-dashed">                                        
+                                        <div class="form-group">
+                                            <label>成功案例</label>
+                                            <div class="success-case">
+                                            	<div class="form-group">
+		                                            <div class="row">
+		                                            	<div class="pull-left case-title">案例1</div>
+		                                            	<div class="pull-right ft12">删除该案例</div>
+		                                    		</div>
+		                                    		<input type="text" class="form-control" placeholder="标题" value="花儿都写了仨电话">
+													<div class="row">
+														<input type="text" class="form-control" placeholder="链接" value="花儿都写了仨电话">
+														<div class="row ft12 link-remark"><i class="yes-icon iconfont icon-zanfuwutubiao37"></i>链接可用</div>
+													</div>
+													<div class="case-item">
+														<!-- Single button -->
+														<div class="btn-group">
+														  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+														    新增案例 <span class="caret"></span>
+														  </button>
+														  <ul class="dropdown-menu">
+														    <li><a href="javascript:void(0);" class="js-add-case" data-type="text">文本</a></li>
+														    <li><a href="javascript:void(0);" class="js-add-case" data-type="link">链接</a></li>
+														  </ul>
+														</div>
+													</div>								
+		                                        </div>
+												<div class="form-group">
+		                                            <div class="case-title text-left">案例2</div>
+		                                    		<input type="text" class="form-control" placeholder="标题" value="花儿都写了仨电话">
+													<input type="text" class="form-control" placeholder="链接" value="花儿都写了仨电话">
+		                                        </div>
+		                                        <div class="form-group">
+		                                            <div class="case-title text-left">案例3</div>
+		                                    		<input type="text" class="form-control" placeholder="标题" value="花儿都写了仨电话">
+													<textarea type="text" class="form-control" rows="5" placeholder="文本" value="花儿都写了仨电话"></textarea>
+		                                        </div>
+											</div>
+                                        </div>
+                                        <hr class="hr-dashed">
+                                        <div class="btn-bottom">
+                                        	<button type="submit" class="btn btn-gray">保存为草稿</button>
+                                        	<button type="submit" class="btn btn-default">下一步</button>
+                                        </div>                                        
+                                    </form>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+		</div>
+	</div>
+</div>
+<!-- begain footer -->
+<footer>
+	<div class="min-footer">
+		<div class="seller-wrap text-center">
+			<img src="/images/min_footer_20151223_243x91.png" alt="">
+		</div>
+	</div>
+	<div class="footer">
+		<div class="seller-wrap">
+			<p><span>咨询热线：400-069-7055</span><span>© 2015 赞服务 版权所有</span><span>浙ICP备0800719</span></p>
+		</div>
+	</div>
+</footer>
+<!-- end footer-->
+<script>
+	seajs.use("scripts/app/job-approve/index")
+	seajs.use("$",function(){
+		var html = $(".photo-info").html();
+		var length = 1;
+		$(".add-photo").click(function(){
+			if(length >= 3){
+				mySeller.alert("不能超过3张");
+			} else{
+				$(".photo-info").append(html);
+			}
+			length = $(".photo-info .form-group").length;
+		});
+	});
+</script>
+</body>
+</html>

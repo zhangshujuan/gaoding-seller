@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/dev/css/app.css">
+    <script type="text/javascript" src="/dev/scripts/lib/sea.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/dev/original/html5shiv/html5shiv.js"></script>
+      <script src="/dev/original/respondjs/respond.js"></script>
+    <![endif]-->
+    <script type="text/javascript">window.HEALTH = {assetsPath:"/dev"}</script>
+    <script type="text/javascript" src="/dev/scripts/lib/config.js"></script>
+</head>	
+<body>
+<!-- begain导航 -->
+<nav class="navbar navbar-default seller-nav">
+<div class="seller-wrap">
+	<div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand logo" href="#"><img src="/images/zfw_logo_20160105_94x44.png" alt="赞服务"></a>
+	      <span class="navbar-brand logo_text"><img src="/images/zfw_slogan_20160105_165x22.png" alt="赞服务"></span>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav navbar-right seller-navlist">
+	        <li><a href="#">订单</a></li>
+	        <li><a href="#">卖家中心</a></li>
+	        <li><a href="#">张三</a></li>
+	        <li><a href="#">退出</a></li>
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle seller-wxg" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="iconfont">&#xe639;</i>  微信公众号</a>
+	          <div class="dropdown-menu">
+	        	额我们
+	          </div>
+	        </li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</div>
+</nav>
+<!-- end导航 -->
+<div class="seller-main">
+	<div class="seller-wrap clearfix">
+		<div class="seller-subnav list-group pull-left">
+			<div class="list-group-item seller-title text-center">
+				<i class="iconfont">&#xe60d;</i><br>
+				<span>买家中心</span>
+			</div>
+			<a href="#" class="list-group-item">
+				<i class="iconfont">&#xe63e;</i> 订单管理
+			</a>
+			<a href="#" class="list-group-item">
+				<i class="iconfont">&#xe63c;</i> 服务管理
+			</a>
+			<a href="#" class="list-group-item">
+				<i class="iconfont">&#xe63d;</i> 店铺数据
+			</a>
+		</div>
+		<div class="seller-content pull-right">
+			<div class="sellerlist-header">
+				<ul class="list-unstyled clearfix">
+					<li class="active"><a href="#tabReleased">已发布 <em>8</em></a><i></i></li>
+					<li><a href="#tabDraft">草稿 <em>2</em></a><i></i></li>
+					<li><a href="#tabCheck">审核 <em>1</em></a><i></i></li>
+					<li><a href="#setDown">已下架 <em>1</em></a></li>
+				</ul>
+				<div class="btnopts">
+					<button type="button" class="btn btn-default">发布新服务</button>
+				</div>
+			</div>
+			<div class="sellerlist-main">
+				<div class="tableth clearfix">
+					<span class="th1">服务名称</span>
+					<span class="th2">价格</span>
+					<span class="th3">成交量</span>
+					<span class="th4">发布时间</span>
+					<span class="th5 clearfix">操作<a href="javascript:void(0);" class="fz12 js-sortable pull-right">拖动排序</a></span>
+				</div>
+				<ul class="tablelist list-unstyled ui-sortable-disabled" id="sortable">
+					<li class="tb-item clearfix">
+						<div class="th1 txt tb-td text-overflow">蓝色黑色的健康恢复收到回复</div>
+						<div class="th2 txt tb-td">¥5000</div>
+						<div class="th3 txt tb-td og">2</div>
+						<div class="th4 tb-td fz12">2015-12-03<br>18:22:34</div>
+						<div class="th5 tb-td">
+							<button type="button" class="btn btn-sm btn-link">排序</button>
+							<button type="button" class="btn btn-sm btn-link">编辑</button>
+							<button type="button" class="btn btn-sm btn-link">下架</button>
+						</div>
+						<!-- <div class="opt">
+							<a href="javascript:void(0);" class="js-sortable" title="排序"><i class="iconfont">&#xe61a;</i></a>
+						</div> -->
+					</li>
+					<li class="tb-item clearfix">
+						<div class="th1 txt tb-td text-overflow">蓝色黑色的健康恢复收到回复</div>
+						<div class="th2 txt tb-td">¥5000</div>
+						<div class="th3 txt tb-td og">3</div>
+						<div class="th4 tb-td fz12">2015-12-03<br>18:22:34</div>
+						<div class="th5 tb-td">
+							<button type="button" class="btn btn-sm btn-link">排序</button>
+							<button type="button" class="btn btn-sm btn-link">编辑</button>
+							<button type="button" class="btn btn-sm btn-link">下架</button>
+						</div>
+					</li>
+					<li class="tb-item clearfix">
+						<div class="th1 txt tb-td text-overflow">蓝色黑色的健康恢复收到回复</div>
+						<div class="th2 txt tb-td">¥5000</div>
+						<div class="th3 txt tb-td og">4</div>
+						<div class="th4 tb-td fz12">2015-12-03<br>18:22:34</div>
+						<div class="th5 tb-td">
+							<button type="button" class="btn btn-sm btn-link">排序</button>
+							<button type="button" class="btn btn-sm btn-link">编辑</button>
+							<button type="button" class="btn btn-sm btn-link">下架</button>
+						</div>
+					</li>
+				</ul>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- begain footer -->
+<footer>
+	<div class="min-footer">
+		<div class="seller-wrap text-center">
+			<img src="/images/min_footer_20151223_243x91.png" alt="">
+		</div>
+	</div>
+	<div class="footer">
+		<div class="seller-wrap">
+			<p><span>咨询热线：400-069-7055</span><span>© 2015 赞服务 版权所有</span><span>浙ICP备0800719</span></p>
+		</div>
+	</div>
+</footer>
+<!-- end footer-->
+<script>
+	seajs.use("scripts/app/seller-serve/index")
+</script>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/dev/css/app.css">
+    <script type="text/javascript" src="/dev/scripts/lib/sea.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/dev/original/html5shiv/html5shiv.js"></script>
+      <script src="/dev/original/respondjs/respond.js"></script>
+    <![endif]-->
+    <script type="text/javascript">window.HEALTH = {assetsPath:"/dev"}</script>
+    <script type="text/javascript" src="/dev/scripts/lib/config.js"></script>
+</head>	
+<body>
+<!-- begain导航 -->
+<nav class="navbar navbar-default seller-nav">
+	<div class="container-fluid">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand logo" href="#"><img src="/images/logo_20151223_93x28.png" alt="赞服务"></a>
+	      <span class="navbar-brand logo_text"><img src="/images/logotext_20151223_135x18.png" alt=""></span>
+	    </div>
+
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav navbar-right seller-navlist">
+	        <li><a href="#">订单</a></li>
+	        <li><a href="#">卖家中心</a></li>
+	        <li><a href="#">张三</a></li>
+	        <li><a href="#">退出</a></li>
+	        <li class="dropdown">
+	          <a href="#" class="dropdown-toggle seller-wxg" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="iconfont">&#xe639;</i>  微信公众号</a>
+	          <div class="dropdown-menu">
+	        	额我们
+	          </div>
+	        </li>
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	</div><!-- /.container-fluid -->
+</nav>
+<!-- end导航 -->
+<div class="seller-main">
+	<div class="seller-wrap clearfix">
+		<div class="seller-subnav list-group pull-left">
+			<div class="list-group-item seller-title text-center">
+				<i class="iconfont">&#xe60d;</i><br>
+				<span>买家中心</span>
+			</div>
+			<a href="#" class="list-group-item">
+				<i class="iconfont">&#xe63e;</i> 订单管理
+			</a>
+			<a href="#" class="list-group-item">
+				<i class="iconfont">&#xe63c;</i> 服务管理
+			</a>
+			<a href="#" class="list-group-item">
+				<i class="iconfont">&#xe63d;</i> 店铺数据
+			</a>
+		</div>
+		<div class="seller-content pull-right setserver panel">
+			<div class="setserver-header">
+				<span class="og">发布服务</span>
+			</div>
+			<div class="setserver-body">
+				<form class="form-horizontal" id="sellerForm">
+					<div class="form-group">
+						<div class="col-sm-2 control-label" >服务名称</div>
+						<div class="col-sm-7">
+						  <input type="text" class="form-control"  name="name" data-validate="{rules:{required:true,minlength:4}}">
+						  <span class="error-text" id="name-error"></span>
+						  <p class="form-control-static fz14 gray">说明：文字文字文字文字文字文字</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-2 control-label">价格</div>
+						<div class="col-sm-10" id="priceRadio">
+							<div class="price-item radio">
+							      <label>
+							        <input type="radio" name="n1" checked value="0"> 固定价格
+							      </label>
+							      <input type="text" class="form-control blockinline" name="n2" data-validate="{rules:{required:true}}">
+							      <span>元</span>
+							</div>
+							<div class="price-item radio">
+							      <label>
+
+							        <input type="radio" name="n1" value="3"> 浮动价格
+							      </label>
+
+							      <input type="text" class="form-control blockinline" name="n4" envalid data-validate="{rules:{required:true}}">
+							      <span>至</span>
+							      <input type="text" class="form-control blockinline" name="n5">
+							      <span>元</span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-2 control-label">关键字</div>
+						<div class="col-sm-7">
+						  <input type="text" class="form-control" id="input-tags" placeholder="添加相关标签，用回车分隔" name="n6">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-2 control-label">服务区域</div>
+						<div class="col-sm-5">
+						  <input type="text" class="form-control" name="n7">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-2 control-label">服务时间</div>
+						<div class="col-sm-10 radio">
+						  	<label>
+						        <input type="radio"> 工作日
+						    </label>
+						    <label>
+						        <input type="radio"> 周末
+						    </label>
+						    <label>
+						        <input type="radio"> 每天
+						    </label>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-2 control-label">服务描述</div>
+						<div class="col-sm-10">
+							<p class="form-control-static fz14 gray">说明：文字文字文字文字文字文字</p>
+							<textarea class="form-control" name="" rows="3">杭州余杭区海创元</textarea>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-2 control-label">支付阶段</div>
+						<div class="col-sm-10">
+							<p class="form-control-static fz14 gray">说明：文字文字文字文字文字文字</p>
+							<div class="radio js-stage-radio">
+								<label>
+									<input type="radio" name="21" value="1"> 分阶段
+								</label>
+								<label>
+									<input type="radio" name="21" value="0"> 一次性支付
+								</label>
+							</div>
+						</div>
+						<div class="col-sm-10 col-sm-offset-2" id="stageMain">
+							<div class="stage">
+								<div class="form-control-static gray">阶段1</div>
+								<div class="form-group">
+									<div class="col-sm-2 control-label">阶段名称</div>
+									<div class="col-sm-10"><input type="text" class="form-control"></div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-2 control-label">付款金额</div>
+									<div class="col-sm-10"><input type="text" class="form-control blockinline" style="width:100px;"><span>  元</span></div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-2 control-label">阶段描述</div>
+									<div class="col-sm-10"><textarea class="form-control" name="" rows="3">确定方案</textarea></div>
+								</div>
+							</div>
+							<div class="stage">
+								<div class="form-control-static gray">阶段2</div>
+								<div class="form-group">
+									<div class="col-sm-2 control-label">阶段名称</div>
+									<div class="col-sm-10"><input type="text" class="form-control"></div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-2 control-label">付款金额</div>
+									<div class="col-sm-10"><input type="text" class="form-control blockinline" style="width:100px;"><span>  元</span></div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-2 control-label">阶段描述</div>
+									<div class="col-sm-10"><textarea class="form-control" name="" rows="3">确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案确定方案</textarea></div>
+								</div>
+							</div>
+							<div class="stage">
+								<div class="form-control-static gray">阶段3</div>
+								<div class="form-group">
+									<div class="col-sm-2 control-label">阶段名称</div>
+									<div class="col-sm-10"><input type="text" class="form-control"></div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-2 control-label">付款金额</div>
+									<div class="col-sm-10"><input type="text" class="form-control blockinline" style="width:100px;"><span>  元</span></div>
+								</div>
+								<div class="form-group">
+									<div class="col-sm-2 control-label">阶段描述</div>
+									<div class="col-sm-10"><textarea class="form-control" name="" rows="3">确定方案</textarea></div>
+								</div>
+							</div>
+							<div class="stage form-group">
+								<div class="col-sm-2 control-label"> </div>
+								<div class="col-sm-10"><button type="button" class="btn btn-default js-add-stage">添加新阶段</button></div>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-2 control-label">成功案例</div>
+						<div class="col-sm-10">
+							<div class="success-case">
+								<div class="case-item">
+									<div class="case-title gray">案例1 <a href="javascript:void(0)">删除该案例</a></div>
+									<div class="case-con">
+										<input type="text" class="form-control" placeholder="标题" value="花儿都写了仨电话">
+										<input type="text" class="form-control" placeholder="链接" value="花儿都写了仨电话">
+									</div>
+								</div>
+								<div class="case-item">
+									<div class="case-title gray">案例2 <a href="javascript:void(0)">删除该案例</a></div>
+									<div class="case-con">
+										<input type="text" class="form-control" placeholder="标题" value="">
+										<input type="text" class="form-control" placeholder="链接" value="">
+									</div>
+								</div>
+								<div class="case-item">
+									<div class="case-title gray">案例2 <a href="javascript:void(0)">删除该案例</a></div>
+									<div class="case-con">
+										<input type="text" class="form-control" placeholder="标题" value="">
+										<textarea class="form-control" placeholder="文本" name="" rows="3"></textarea>
+									</div>
+								</div>
+								<div class="case-item">
+									<!-- Single button -->
+									<div class="btn-group">
+									  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									    新增案例 <span class="caret"></span>
+									  </button>
+									  <ul class="dropdown-menu">
+									    <li><a href="javascript:void(0);" class="js-add-case" data-type="text">文本</a></li>
+									    <li><a href="javascript:void(0);" class="js-add-case" data-type="link">链接</a></li>
+									  </ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="text-center">
+					  <button type="submit" class="btn btn-default">保存为草稿</button>
+					  <button type="submit" class="btn btn-danger">发布</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- begain footer -->
+<footer>
+	<div class="min-footer">
+		<div class="seller-wrap text-center">
+			<img src="/images/min_footer_20151223_243x91.png" alt="">
+		</div>
+	</div>
+	<div class="footer">
+		<div class="seller-wrap">
+			<p><span>咨询热线：400-069-7055</span><span>© 2015 赞服务 版权所有</span><span>浙ICP备0800719</span></p>
+		</div>
+	</div>
+</footer>
+<!-- end footer-->
+<script>
+	seajs.use("scripts/app/apply-server/index")
+</script>
+</body>
+</html>

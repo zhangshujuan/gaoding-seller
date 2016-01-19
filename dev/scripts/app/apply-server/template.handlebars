@@ -1,0 +1,43 @@
+{{#if stage}}
+<div class="stage" id="{{id}}">
+	<div class="form-control-static stage-title gray">阶段 {{#is len ">=" 3}}<a href="javascript:void(0)" class="js-del-stage">删除该阶段</a>{{/is}}</div>
+	<div class="form-group">
+		<div class="col-sm-2 control-label">阶段名称</div>
+		<div class="col-sm-10"><input type="text" name="phaseNames_{{index}}" class="form-control" data-validate="{rules:{required: true,maxlength:45},messages:{required: '请填写阶段名称',maxlength:'不能超过45个字'}}"></div>
+	</div>
+	{{#is floatPrice "not" true}}
+	<div class="form-group js-phase-prices">
+		<div class="col-sm-2 control-label">付款金额</div>
+		<div class="col-sm-10"><input type="text" name="phasePrices_{{index}}" class="form-control blockinline" style="width:100px;" data-validate="{rules:{required: true,range:[0,999999999]},messages:{required: '请填写金额',range:'请输入正确的金额,0~999999999之间的整数'}}"><span>  元</span></div>
+	</div>
+	{{else}}
+	<input type="hidden" name="phasePrices_{{index}}">
+	{{/is}}
+	<div class="form-group">
+		<div class="col-sm-2 control-label">阶段描述</div>
+		<div class="col-sm-10"><textarea class="form-control" name="phaseDescriptions_{{index}}"  rows="3" data-validate="{rules:{required: true,maxlength:200},messages:{required: '请填写阶段描述',maxlength:'不能超过200个字'}}"></textarea></div>
+	</div>
+</div>
+{{/if}}
+{{#if Case}}
+	{{#is Case "===" "link"}}
+	<div class="case-item" id="{{id}}">
+		<div class="case-title gray">案例 <a href="javascript:void(0)" class="js-del-case">删除该案例</a></div>
+		<div class="case-con">
+			<input type="text" class="form-control" placeholder="标题" value="" name="caseTitle_{{index}}" data-validate="{rules:{maxlength:128,required:true},messages:{maxlength:'标题超长',required:'请填写标题'}}">
+			<input type="text" class="form-control" placeholder="链接" value="" name="caseLink_{{index}}" data-validate="{rules:{required:true,url:true,maxlength:256},messages:{url: '请正确填写链接地址',maxlength:'链接地址超长',required:'请填写链接地址'}}">
+			<input type="hidden" name="caseDescription_{{index}}" value="">
+		</div>
+	</div>
+	{{/is}}
+	{{#is Case "===" "text"}}
+	<div class="case-item" id="{{id}}">
+		<div class="case-title gray">案例 <a href="javascript:void(0)" class="js-del-case">删除该案例</a></div>
+		<div class="case-con">
+			<input type="text" class="form-control" placeholder="标题" value="" name="caseTitle_{{index}}" data-validate="{rules:{maxlength:128,required:true},messages:{maxlength:'标题超长',required:'请填写标题'}}">
+			<textarea class="form-control" placeholder="文本" name="caseDescription_{{index}}" rows="3" data-validate="{rules:{maxlength:2048,required:true},messages:{maxlength:'文本超长',required:'请填写文本'}}"></textarea>
+			<input type="hidden" name="caseLink_{{index}}" value="">
+		</div>
+	</div>
+	{{/is}}
+{{/if}}
