@@ -1,0 +1,103 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "configuration" : null,
+    "debugMode" : false,
+    "externalId" : null,
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "0bbe2690-ecde-11ee-ac4e-4fa0f290f88e"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "270d3000-ecdc-11ee-ac4e-4fa0f290f88e"
+    },
+    "name" : "Tutorial Rule chain",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 0,
+      "toIndex" : 1,
+      "type" : "Post telemetry"
+    }, {
+      "fromIndex" : 1,
+      "toIndex" : 2,
+      "type" : "Success"
+    } ],
+    "firstNodeIndex" : 0,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 303,
+        "layoutY" : 150
+      },
+      "configuration" : {
+        "version" : 0
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "0bbe2690-ecde-11ee-ac4e-4fa0f290f88e"
+      },
+      "name" : "Message Type Switch",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbMsgTypeSwitchNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 723,
+        "layoutY" : 150
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "function precisionRound(number, precision){var factor = Math.pow(10, precision);return Math.round(number * factor) / factor;}if (typeof msg.temperature !== 'undefined'){msg.temperature = precisionRound((msg.temperature -32) * 5 / 9, 2);}return {msg: msg, metadata: metadata, msgType: msgType};",
+        "tbelScript" : "function precisionRound(number, precision){var factor = Math.pow(10, precision);return Math.round(number * factor) / factor;}if (typeof msg.temperature !== 'undefined'){msg.temperature = precisionRound((msg.temperature -32) * 5 / 9, 2);}return {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "0bbe9bc0-ecde-11ee-ac4e-4fa0f290f88e"
+      },
+      "name" : "F to C",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1066,
+        "layoutY" : 152
+      },
+      "configuration" : {
+        "defaultTTL" : 0,
+        "skipLatestPersistence" : false,
+        "useServerTs" : false
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "0bbee9e0-ecde-11ee-ac4e-4fa0f290f88e"
+      },
+      "name" : "Save TS",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
