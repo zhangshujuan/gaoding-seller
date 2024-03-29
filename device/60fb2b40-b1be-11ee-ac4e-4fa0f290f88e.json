@@ -1,0 +1,118 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "gateway" : false,
+      "overwriteActivityTime" : false,
+      "description" : ""
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "f85eb1e0-b1b0-11ee-ac4e-4fa0f290f88e"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "2b3aa8c0-1a04-11ee-af0b-3bb8967337dd"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "60fb2b40-b1be-11ee-ac4e-4fa0f290f88e"
+    },
+    "label" : "山东交通学院",
+    "name" : "溯源#009",
+    "softwareId" : null,
+    "type" : "default"
+  },
+  "credentials" : {
+    "credentialsId" : "gKBExi6aWdbm1xiswQX6",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1711095066367,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenAppKey",
+      "lastUpdateTs" : 1706851973214,
+      "longValue" : null,
+      "strValue" : "f0a98b14a4d840b183ab9ddb87332689"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenAppSecret",
+      "lastUpdateTs" : 1706851981554,
+      "longValue" : null,
+      "strValue" : "35e38712b2cc6cea5ed3f58e50bb878d"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenChannelNo",
+      "lastUpdateTs" : 1706851988803,
+      "longValue" : null,
+      "strValue" : "1"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenDeviceSerial",
+      "lastUpdateTs" : 1706852000659,
+      "longValue" : null,
+      "strValue" : "AG2890050"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1711095066367,
+      "longValue" : 1711095066367,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1711094428394,
+      "longValue" : 1711094425501,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "[{\"name\":\"山东交通学院(长清校区)\",\"lng\":116.79617269527341,\"lat\":36.54332451024887,\"isDefault\":true}]",
+      "key" : "lockPointList",
+      "lastUpdateTs" : 1705132198351,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "splOffsetValue",
+      "lastUpdateTs" : 1705128324039,
+      "longValue" : -25,
+      "strValue" : null
+    } ],
+    "SHARED_SCOPE" : [ ]
+  }
+}

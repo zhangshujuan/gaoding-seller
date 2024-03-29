@@ -1,0 +1,118 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "gateway" : false,
+      "overwriteActivityTime" : false,
+      "description" : ""
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "f85eb1e0-b1b0-11ee-ac4e-4fa0f290f88e"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "2b3aa8c0-1a04-11ee-af0b-3bb8967337dd"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "5cdb42c0-b1be-11ee-ac4e-4fa0f290f88e"
+    },
+    "label" : "开元大街站点",
+    "name" : "溯源#008",
+    "softwareId" : null,
+    "type" : "default"
+  },
+  "credentials" : {
+    "credentialsId" : "IUTIdIKOkUII1orB2bfM",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1711095066368,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenAppKey",
+      "lastUpdateTs" : 1706793000993,
+      "longValue" : null,
+      "strValue" : "f0a98b14a4d840b183ab9ddb87332689"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenAppSecret",
+      "lastUpdateTs" : 1706793009241,
+      "longValue" : null,
+      "strValue" : "35e38712b2cc6cea5ed3f58e50bb878d"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenChannelNo",
+      "lastUpdateTs" : 1706793018252,
+      "longValue" : null,
+      "strValue" : "1"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenDeviceSerial",
+      "lastUpdateTs" : 1706793030689,
+      "longValue" : null,
+      "strValue" : "AG2890065"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1711095066368,
+      "longValue" : 1711095066367,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1711094440379,
+      "longValue" : 1711094440141,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "[{\"name\":\"济阳区民政局\",\"lng\":117.17758566904372,\"lat\":36.98083095104422,\"isDefault\":true}]",
+      "key" : "lockPointList",
+      "lastUpdateTs" : 1705131947208,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "splOffsetValue",
+      "lastUpdateTs" : 1705128312206,
+      "longValue" : -25,
+      "strValue" : null
+    } ],
+    "SHARED_SCOPE" : [ ]
+  }
+}

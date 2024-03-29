@@ -1,11 +1,7 @@
 {
   "entityType" : "DEVICE",
   "entity" : {
-    "additionalInfo" : {
-      "gateway" : false,
-      "overwriteActivityTime" : false,
-      "description" : ""
-    },
+    "additionalInfo" : null,
     "customerId" : {
       "entityType" : "CUSTOMER",
       "id" : "13814000-1dd2-11b2-8080-808080808080"
@@ -20,21 +16,21 @@
     },
     "deviceProfileId" : {
       "entityType" : "DEVICE_PROFILE",
-      "id" : "2b3aa8c0-1a04-11ee-af0b-3bb8967337dd"
+      "id" : "9c0d7d30-eccb-11ee-ac4e-4fa0f290f88e"
     },
     "externalId" : null,
     "firmwareId" : null,
     "id" : {
       "entityType" : "DEVICE",
-      "id" : "edf009d0-ecd3-11ee-ac4e-4fa0f290f88e"
+      "id" : "aefc4a70-eccb-11ee-ac4e-4fa0f290f88e"
     },
-    "label" : "",
-    "name" : "DHT22",
+    "label" : null,
+    "name" : "004",
     "softwareId" : null,
-    "type" : "default"
+    "type" : "Device"
   },
   "credentials" : {
-    "credentialsId" : "Ufdh69Thteo79taKRAPJ",
+    "credentialsId" : "vQfrbJJ5KAle79T5YeEm",
     "credentialsType" : "ACCESS_TOKEN",
     "credentialsValue" : null
   },
@@ -45,7 +41,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1711612147358,
+      "lastUpdateTs" : 1711607647349,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -53,16 +49,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1711612147358,
-      "longValue" : 1711612147358,
-      "strValue" : null
-    }, {
-      "booleanValue" : null,
-      "doubleValue" : null,
-      "jsonValue" : null,
-      "key" : "lastActivityTime",
-      "lastUpdateTs" : 1711611532389,
-      "longValue" : 1711611531402,
+      "lastUpdateTs" : 1711607647350,
+      "longValue" : 1711607647349,
       "strValue" : null
     } ],
     "SHARED_SCOPE" : [ ]

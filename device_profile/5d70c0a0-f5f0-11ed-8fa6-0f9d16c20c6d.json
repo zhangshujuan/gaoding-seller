@@ -1,0 +1,59 @@
+{
+  "entityType" : "DEVICE_PROFILE",
+  "entity" : {
+    "default" : false,
+    "defaultDashboardId" : null,
+    "defaultEdgeRuleChainId" : null,
+    "defaultQueueName" : null,
+    "defaultRuleChainId" : null,
+    "description" : "单通道AE采集卡配置",
+    "externalId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "5d70c0a0-f5f0-11ed-8fa6-0f9d16c20c6d"
+    },
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "5d70c0a0-f5f0-11ed-8fa6-0f9d16c20c6d"
+    },
+    "image" : null,
+    "name" : "PXAE_CFG",
+    "profileData" : {
+      "alarms" : [ ],
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "provisionConfiguration" : {
+        "type" : "DISABLED",
+        "provisionDeviceSecret" : null
+      },
+      "transportConfiguration" : {
+        "type" : "MQTT",
+        "deviceAttributesSubscribeTopic" : "v1/devices/me/attributes",
+        "deviceAttributesTopic" : "v1/devices/me/attributes",
+        "deviceTelemetryTopic" : "v1/devices/me/telemetry",
+        "sendAckOnValidationException" : false,
+        "sparkplug" : false,
+        "sparkplugAttributesMetricNames" : [ "Properties/*", "Device Control/*", "Node Control/*" ],
+        "transportPayloadTypeConfiguration" : {
+          "transportPayloadType" : "PROTOBUF",
+          "deviceAttributesProtoSchema" : "syntax = \"proto3\";\r\n\r\npackage attributes;\r\n\r\nmessage EdgeAttributes\r\n{\r\n     uint32 devID = 1;\r\n     bool state = 2;\r\n}",
+          "deviceRpcRequestProtoSchema" : "syntax =\"proto3\";\npackage rpc;\n\nmessage RpcRequestMsg {\n  optional string method = 1;\n  optional int32 requestId = 2;\n  optional string params = 3;\n}",
+          "deviceRpcResponseProtoSchema" : "syntax =\"proto3\";\npackage rpc;\n\nmessage RpcResponseMsg {\n  optional string payload = 1;\n}",
+          "deviceTelemetryProtoSchema" : "syntax = \"proto3\";\r\n\r\npackage telemetry;\r\n\r\nmessage DttTelemetry\r\n{\r\n     uint32 devID = 1;\r\n     uint32 type = 2; // 0: param  1: wave\r\n\r\n     uint32 duration = 3;\r\n     uint32 ring_count = 4;\r\n     uint32 peek_count = 5;\r\n     uint32 drop_time = 6;\r\n     uint32 raise_time = 7;\r\n     uint32 rms_time = 8;\r\n     uint64 arrive_time = 9;\r\n     uint64 frame_num = 10;\r\n     double energy = 11;\r\n     double amplitude = 12;\r\n     double threshold = 13;\r\n     double main_freq = 14;\r\n     double avg_freq = 15;\r\n     double init_freq = 16;\r\n     double rms = 17;\r\n     double asl = 18;\r\n\r\n     WaveData waveData = 19;\r\n\r\n    message WaveData{\r\n     uint32 size = 1;\r\n     uint64 frame_num = 2;\r\n     uint64 arrive_time = 3;\r\n     repeated float wave = 4;\r\n    }\r\n}",
+          "enableCompatibilityWithJsonPayloadFormat" : false,
+          "useJsonPayloadFormatForDefaultDownlinkTopics" : false
+        }
+      }
+    },
+    "provisionDeviceKey" : null,
+    "provisionType" : "DISABLED",
+    "softwareId" : null,
+    "transportType" : "MQTT",
+    "type" : "DEFAULT"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

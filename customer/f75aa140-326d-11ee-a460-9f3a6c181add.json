@@ -1,0 +1,29 @@
+{
+  "entityType" : "CUSTOMER",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : "",
+      "homeDashboardId" : "2678f6b0-31d9-11ee-a460-9f3a6c181add",
+      "homeDashboardHideToolbar" : true
+    },
+    "address" : null,
+    "address2" : null,
+    "city" : null,
+    "country" : null,
+    "email" : null,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "CUSTOMER",
+      "id" : "f75aa140-326d-11ee-a460-9f3a6c181add"
+    },
+    "name" : "噪声溯源第一组",
+    "phone" : null,
+    "state" : null,
+    "title" : "噪声溯源第一组",
+    "zip" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

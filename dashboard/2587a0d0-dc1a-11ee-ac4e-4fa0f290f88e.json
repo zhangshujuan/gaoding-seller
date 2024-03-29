@@ -708,6 +708,7 @@
     "name" : "test",
     "title" : "test"
   },
+  "relations" : [ ],
   "attributes" : {
     "SERVER_SCOPE" : [ ]
   }

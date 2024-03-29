@@ -2,13 +2,12 @@
   "entityType" : "DEVICE",
   "entity" : {
     "additionalInfo" : {
-      "gateway" : false,
-      "overwriteActivityTime" : false,
-      "description" : ""
+      "description" : "",
+      "gateway" : false
     },
     "customerId" : {
       "entityType" : "CUSTOMER",
-      "id" : "13814000-1dd2-11b2-8080-808080808080"
+      "id" : "2baedbf0-dc23-11ee-ac4e-4fa0f290f88e"
     },
     "deviceData" : {
       "configuration" : {
@@ -26,15 +25,15 @@
     "firmwareId" : null,
     "id" : {
       "entityType" : "DEVICE",
-      "id" : "edf009d0-ecd3-11ee-ac4e-4fa0f290f88e"
+      "id" : "11e720b0-dc23-11ee-ac4e-4fa0f290f88e"
     },
     "label" : "",
-    "name" : "DHT22",
+    "name" : "vuetest",
     "softwareId" : null,
     "type" : "default"
   },
   "credentials" : {
-    "credentialsId" : "Ufdh69Thteo79taKRAPJ",
+    "credentialsId" : "ttLDH9PsSWbakEpuhGVp",
     "credentialsType" : "ACCESS_TOKEN",
     "credentialsValue" : null
   },
@@ -45,7 +44,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1711612147358,
+      "lastUpdateTs" : 1710992886173,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -53,16 +52,32 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1711612147358,
-      "longValue" : 1711612147358,
+      "lastUpdateTs" : 1710992886173,
+      "longValue" : 1710992886173,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1711611532389,
-      "longValue" : 1711611531402,
+      "lastUpdateTs" : 1710992230378,
+      "longValue" : 1710992227825,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastConnectTime",
+      "lastUpdateTs" : 1710990687988,
+      "longValue" : 1710990687988,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastDisconnectTime",
+      "lastUpdateTs" : 1710992227846,
+      "longValue" : 1710992227846,
       "strValue" : null
     } ],
     "SHARED_SCOPE" : [ ]

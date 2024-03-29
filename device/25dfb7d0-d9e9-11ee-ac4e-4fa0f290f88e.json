@@ -1,0 +1,118 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "gateway" : false,
+      "overwriteActivityTime" : false,
+      "description" : ""
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "2b3aa8c0-1a04-11ee-af0b-3bb8967337dd"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "25dfb7d0-d9e9-11ee-ac4e-4fa0f290f88e"
+    },
+    "label" : "虞山路",
+    "name" : "溯源#015",
+    "softwareId" : null,
+    "type" : "default"
+  },
+  "credentials" : {
+    "credentialsId" : "5QrcE56B4Pg5NAl8yq1X",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1711095066367,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenAppKey",
+      "lastUpdateTs" : 1709530623890,
+      "longValue" : null,
+      "strValue" : "f0a98b14a4d840b183ab9ddb87332689"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenAppSecret",
+      "lastUpdateTs" : 1709530637068,
+      "longValue" : null,
+      "strValue" : "35e38712b2cc6cea5ed3f58e50bb878d"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenChannelNo",
+      "lastUpdateTs" : 1709530646037,
+      "longValue" : null,
+      "strValue" : "1"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenDeviceSerial",
+      "lastUpdateTs" : 1709530658690,
+      "longValue" : null,
+      "strValue" : "AZ7466224"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1711095066368,
+      "longValue" : 1711095066367,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1711094440379,
+      "longValue" : 1711094438286,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "[{\"name\":\"济南市虞山路郭店医院\",\"lng\":117.23133955211667,\"lat\":36.738917512033886,\"isDefault\":true}]",
+      "key" : "lockPointList",
+      "lastUpdateTs" : 1709532086495,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "splOffsetValue",
+      "lastUpdateTs" : 1709530674400,
+      "longValue" : null,
+      "strValue" : "-25"
+    } ],
+    "SHARED_SCOPE" : [ ]
+  }
+}

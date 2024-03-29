@@ -1,0 +1,56 @@
+{
+  "entityType" : "DEVICE_PROFILE",
+  "entity" : {
+    "default" : false,
+    "defaultDashboardId" : null,
+    "defaultEdgeRuleChainId" : null,
+    "defaultQueueName" : null,
+    "defaultRuleChainId" : null,
+    "description" : "",
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "6acc0f10-1a09-11ee-84c7-59378f85ce5f"
+    },
+    "image" : null,
+    "name" : "2708_CFG",
+    "profileData" : {
+      "alarms" : [ ],
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "provisionConfiguration" : {
+        "type" : "DISABLED",
+        "provisionDeviceSecret" : null
+      },
+      "transportConfiguration" : {
+        "type" : "MQTT",
+        "deviceAttributesSubscribeTopic" : "v1/devices/me/attributes",
+        "deviceAttributesTopic" : "v1/devices/me/attributes",
+        "deviceTelemetryTopic" : "v1/devices/me/telemetry",
+        "sendAckOnValidationException" : false,
+        "sparkplug" : false,
+        "sparkplugAttributesMetricNames" : [ "Properties/*", "Device Control/*", "Node Control/*" ],
+        "transportPayloadTypeConfiguration" : {
+          "transportPayloadType" : "PROTOBUF",
+          "deviceAttributesProtoSchema" : "syntax = \"proto3\";\r\n\r\npackage attributes;\r\n\r\nmessage StateAttribute\r\n{\r\n    bool isOk = 1;\r\n    repeated ChannelState states = 2;\r\n\r\n    message ChannelState\r\n    {\r\n        uint32 channelID = 1;\r\n        bool online = 2;\r\n    }\r\n   \r\n}",
+          "deviceRpcRequestProtoSchema" : "syntax =\"proto3\";\npackage rpc;\n\nmessage RpcRequestMsg {\n  optional string method = 1;\n  optional int32 requestId = 2;\n  optional string params = 3;\n}",
+          "deviceRpcResponseProtoSchema" : "syntax =\"proto3\";\npackage rpc;\n\nmessage RpcResponseMsg {\n  optional string payload = 1;\n}",
+          "deviceTelemetryProtoSchema" : "syntax = \"proto3\";\r\n\r\npackage telemetry;\r\n\r\nmessage DataTelemetry\r\n{\r\n    uint32 channelID = 1; // 通道索引\r\n    uint32 type = 2; // 数据类型，0: leq data 1: ai data\r\n    \r\n    float leq = 3; // leq数据\r\n    uint32 airesult = 4; // 声纹结果，0，正常，1：异常\r\n    string aitype = 5; // 声纹类别\r\n    float aiprobability = 6; // 声纹类型的概率\r\n    uint64 timestamp = 7; // 数据时间戳\r\n    string wavePath = 8; // 声纹对应的wav波形在本地的存储全路径\r\n\r\n    WaveData waveData = 9; // 实时波形\r\n\r\n    message WaveData{\r\n     uint32 size = 1;\r\n     repeated float wave = 2;\r\n    }\r\n}",
+          "enableCompatibilityWithJsonPayloadFormat" : false,
+          "useJsonPayloadFormatForDefaultDownlinkTopics" : false
+        }
+      }
+    },
+    "provisionDeviceKey" : null,
+    "provisionType" : "DISABLED",
+    "softwareId" : null,
+    "transportType" : "MQTT",
+    "type" : "DEFAULT"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

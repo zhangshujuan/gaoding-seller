@@ -1,0 +1,501 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : "幅度，上升时间，振铃计数，能量，到达时间，持续时间"
+    },
+    "configuration" : null,
+    "debugMode" : false,
+    "externalId" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "a99805a0-f8a8-11ed-895b-bff0d2e6b4ea"
+    },
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "ce841fd0-1a08-11ee-84c7-59378f85ce5f"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "a99805a0-f8a8-11ed-895b-bff0d2e6b4ea"
+    },
+    "name" : "报警子规则链",
+    "root" : false,
+    "type" : "EDGE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 0,
+      "toIndex" : 4,
+      "type" : "True"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 3,
+      "type" : "Created"
+    }, {
+      "fromIndex" : 2,
+      "toIndex" : 3,
+      "type" : "Updated"
+    }, {
+      "fromIndex" : 3,
+      "toIndex" : 1,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 4,
+      "toIndex" : 11,
+      "type" : "False"
+    }, {
+      "fromIndex" : 4,
+      "toIndex" : 16,
+      "type" : "True"
+    }, {
+      "fromIndex" : 5,
+      "toIndex" : 1,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 6,
+      "toIndex" : 5,
+      "type" : "Cleared"
+    }, {
+      "fromIndex" : 7,
+      "toIndex" : 9,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 7,
+      "toIndex" : 10,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 9,
+      "toIndex" : 8,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 0,
+      "type" : "True"
+    }, {
+      "fromIndex" : 10,
+      "toIndex" : 9,
+      "type" : "False"
+    }, {
+      "fromIndex" : 11,
+      "toIndex" : 12,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 11,
+      "toIndex" : 13,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 12,
+      "toIndex" : 6,
+      "type" : "True"
+    }, {
+      "fromIndex" : 13,
+      "toIndex" : 14,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 15,
+      "toIndex" : 2,
+      "type" : "True"
+    }, {
+      "fromIndex" : 16,
+      "toIndex" : 13,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 16,
+      "toIndex" : 15,
+      "type" : "Success"
+    } ],
+    "firstNodeIndex" : 7,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 40,
+        "layoutY" : 298
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "if (msg.height !=) {\n    msg.name = \"123\"\n    return true;\n} else {\n    return false;\n}",
+        "tbelScript" : "var result = false;\n\nif (msg.amplitude != null) {\n    //判断幅值是否符合报警生成\n    if (msg.amplitude > msg.ss_alarmCreatedThreshold || msg\n        .amplitude < msg.ss_alarmClearedThreshold) {\n        result = true;\n    }\n}\nreturn result;"
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ce81fcf0-1a08-11ee-84c7-59378f85ce5f"
+      },
+      "name" : "校验是否满足报警生成/清除条件",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1535,
+        "layoutY" : 467
+      },
+      "configuration" : {
+        "scope" : "SERVER_SCOPE"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ce827220-1a08-11ee-84c7-59378f85ce5f"
+      },
+      "name" : "报警数据推送Cloud",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.edge.TbMsgPushToCloudNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 882,
+        "layoutY" : 286
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "alarmDetailsBuildJs" : "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    delete metadata.prevAlarmDetails;\n    //now metadata is the same as it comes IN this rule node\n}\n\n\nreturn details;",
+        "alarmDetailsBuildTbel" : "var details = msg;\nif (metadata.prevAlarmDetails != null) {\n    var tb = JSON.parse(metadata.prevAlarmDetails);\n    if (tb.count == null) {\n        details.count = 1;\n        details.info = \"update alarm, not count\";\n    } else {\n        details.count = tb.count + 1;\n        details.info = \"update alarm, with count\";\n    }\n} else {\n    details.info = \"create alarm\";\n    details.count = 1;\n}\n\nreturn details;",
+        "useMessageAlarmData" : false,
+        "overwriteAlarmDetails" : true,
+        "alarmType" : "General Alarm",
+        "severity" : "CRITICAL",
+        "propagate" : false,
+        "relationTypes" : [ ],
+        "propagateToOwner" : false,
+        "propagateToTenant" : false,
+        "dynamicSeverity" : false
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ce82c040-1a08-11ee-84c7-59378f85ce5f"
+      },
+      "name" : "产生报警",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.action.TbCreateAlarmNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1213,
+        "layoutY" : 284
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "if (msg.details !== undefined && JSON.stringify(msg\n        .details) !== '{}') {\n    msg.details.info =\n        \"this alarm data is modified!\"\n    return {\n        msg: msg.details,\n        metadata: metadata,\n        msgType: 'POST_TELEMETRY_REQUEST'\n    };\n} else {\n    var newDetais = {}\n\n    return {\n        msg: newDetais,\n        metadata: metadata,\n        msgType: msgType\n    };\n}",
+        "tbelScript" : "if (msg.details !== undefined && msg.details.isEmptyObject()) {\n    // msg.details.alarmData.info =\n    //     \"this alarm data is modified!\"\n    // return {\n    //     msg: msg.details.alarmData,\n    //     metadata: metadata,\n    //     msgType: msgType\n    // };\n    \n    return {\n        msg: msg.details.alarmData,\n        metadata: metadata,\n        msgType: msgType\n    };\n} else {\n    return {\n        msg: {},\n        metadata: metadata,\n        msgType: msgType\n    };\n}"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ce830e60-1a08-11ee-84c7-59378f85ce5f"
+      },
+      "name" : "生成的报警数据格式化",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 32,
+        "layoutY" : 473
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "if (msg.amplitude > msg.ss_alarmCreatedThreshold) {\n    return true;\n} else {\n    return false;\n}",
+        "tbelScript" : "if (msg.amplitude > msg.ss_alarmCreatedThreshold) {\n    return true;\n} else {\n    return false;\n}"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ce835c80-1a08-11ee-84c7-59378f85ce5f"
+      },
+      "name" : "区分生成/清除分支",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1213,
+        "layoutY" : 650
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "if (msg.details !== undefined && JSON.stringify(msg\n        .details) !== '{}') {\n    msg.details.info =\n        \"this alarm data is cleared!\"\n    return {\n        msg: msg.details,\n        metadata: metadata,\n        msgType: 'POST_TELEMETRY_REQUEST'\n    };\n} else {\n    \n    var newDetails = {}\n    return {\n        msg: newDetails,\n        metadata: metadata,\n        msgType: msgType\n    };\n}",
+        "tbelScript" : "if (msg.details !== undefined && JSON.stringify(msg\n        .details) !== '{}') {\n    msg.details.info =\n        \"this alarm data is cleared!\"\n    return {\n        msg: msg.details,\n        metadata: metadata,\n        msgType: 'POST_TELEMETRY_REQUEST'\n    };\n} else {\n    return {\n        msg: {},\n        metadata: metadata,\n        msgType: msgType\n    };\n}"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ce838390-1a08-11ee-84c7-59378f85ce5f"
+      },
+      "name" : "清除的报警数据格式化",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 893,
+        "layoutY" : 653
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "alarmDetailsBuildJs" : "var details = {};\nif (metadata.prevAlarmDetails) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    delete metadata.prevAlarmDetails;\n    //now metadata is the same as it comes IN this rule node\n}\n\n\nreturn details;",
+        "alarmDetailsBuildTbel" : "var details = {};\nif (metadata.prevAlarmDetails != null) {\n    details = JSON.parse(metadata.prevAlarmDetails);\n    //remove prevAlarmDetails from metadata\n    metadata.remove('prevAlarmDetails');\n    //now metadata is the same as it comes IN this rule node\n    details.info = \"clear alarm, use pre\";\n    details.count = -1;\n}\nelse\n{\n    details.info = \"clear alarm, not pre\";\n    details.count = -2;\n    localStorage.removeItem('details')\n}\n\n\nreturn details;",
+        "alarmType" : "General Alarm"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ce83d1b0-1a08-11ee-84c7-59378f85ce5f"
+      },
+      "name" : "清除报警",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.action.TbClearAlarmNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 283,
+        "layoutY" : 151
+      },
+      "configuration" : {
+        "tellFailureIfAbsent" : true,
+        "fetchToData" : true,
+        "clientAttributeNames" : [ ],
+        "sharedAttributeNames" : [ ],
+        "serverAttributeNames" : [ "alarmCreatedDuration", "alarmCreatedThreshold", "lastAlarmCreatedTime", "lastAlarmClearedTime", "lastAlarmUpdatedValue", "lastAlarmCounts", "alarmClearedDuration", "alarmClearedThreshold" ],
+        "latestTsKeyNames" : [ ],
+        "getLatestValueWithTs" : true
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ce841fd0-1a08-11ee-84c7-59378f85ce5f"
+      },
+      "name" : "获取当前属性",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetAttributesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 1215,
+        "layoutY" : 151
+      },
+      "configuration" : {
+        "scope" : "SERVER_SCOPE",
+        "notifyDevice" : false,
+        "sendAttributesUpdatedNotification" : false
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ce846df0-1a08-11ee-84c7-59378f85ce5f"
+      },
+      "name" : "更新服务端属性",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "没有属性时创建",
+        "layoutX" : 742,
+        "layoutY" : 29
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "if (msg.details !== undefined && JSON.stringify(msg\n        .details) !== '{}') {\n    msg.details.info =\n        \"this alarm data is modified!\"\n    return {\n        msg: msg.details,\n        metadata: metadata,\n        msgType: 'POST_ATTRIBUTES_REQUEST'\n    };\n} else {\n    var newDetais = {}\n\n    return {\n        msg: newDetais,\n        metadata: metadata,\n        msgType: msgType\n    };\n}",
+        "tbelScript" : "    var newAttr = {};\n\n    if (msg.ss_lastAlarmCreatedTime == null) {\n        newAttr.lastAlarmCreatedTime = 0;\n    }\n    \n    if(msg.ss_lastAlarmClearedTime == null) {\n        newAttr.lastAlarmClearedTime = 0;\n    }\n    \n    if(msg.ss_lastAlarmUpdatedValue == null) {\n        newAttr.lastAlarmUpdatedValue = 0;\n    }\n\n    if (msg.ss_lastAlarmCounts == null) {\n        newAttr.lastAlarmCounts = 0;\n    }\n    \n    if (msg.ss_alarmCreatedThreshold == null) {\n        newAttr.alarmCreatedThreshold = 0;\n    }\n    \n    if (msg.ss_alarmClearedThreshold == null) {\n        newAttr.alarmClearedThreshold = 0;\n    }\n    \n    if (msg.ss_alarmCreatedDuration == null) {\n        newAttr.alarmCreatedDuration = 0;\n    }\n    \n    if (msg.ss_alarmClearedDuration == null) {\n        newAttr.alarmClearedDuration = 0;\n    }\n\n    return {\n        msg: newAttr,\n        metadata: metadata,\n        msgType: 'POST_ATTRIBUTES_REQUEST'\n    };"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ce84bc10-1a08-11ee-84c7-59378f85ce5f"
+      },
+      "name" : "初始化属性-没有属性时创建",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 565,
+        "layoutY" : 150
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "if (msg.height !=) {\n    msg.name = \"123\"\n    return true;\n} else {\n    return false;\n}",
+        "tbelScript" : "var result = true;\nif (msg.ss_lastAlarmCreatedTime == null) {\n    result = false;\n}\n\nif (msg.ss_lastAlarmClearedTime == null) {\n    result = false;\n}\n\nif (msg.ss_lastAlarmUpdatedValue == null) {\n    result = false;\n}\n\nif (msg.ss_lastAlarmCounts == null) {\n    result = false;\n}\n\nif (msg.ss_alarmCreatedThreshold == null) {\n    result = false;\n}\n\nif (msg.ss_alarmClearedThreshold == null) {\n    result = false;\n}\n\nif (msg.ss_alarmCreatedDuration == null) {\n    result = false;\n}\n\nif (msg.ss_alarmClearedDuration == null) {\n    result = false;\n}\n\nreturn result;"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ce850a30-1a08-11ee-84c7-59378f85ce5f"
+      },
+      "name" : "校验全部属性是否存在",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 326,
+        "layoutY" : 561
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "//清除报警\nvar newMsg = msg;\n\n//标识是否清除报警，重置报警生成时间\nnewMsg.isAlarmedClearedFlag = false;\nnewMsg.ss_lastAlarmCreatedTime = 0;\n\n//首次创建统计记录\nif (msg.ss_lastAlarmClearedTime == 0) {\n    newMsg.ss_lastAlarmClearedTime = new Date(parseInt(\n        metadata.ts)).valueOf();\n    return {\n        msg: newMsg,\n        metadata: metadata,\n        msgType: msgType\n    };\n}\n\nvar metadataTs = new Date(parseInt(metadata.ts)).valueOf();\n// newMsg.metadataTs = metadataTs;\n// newMsg.deltaTs = metadataTs - msg.ss_lastAlarmClearedTime;\n//判断是否达到清除报警时长\nif (metadataTs - msg.ss_lastAlarmClearedTime >= msg\n    .ss_alarmClearedDuration * 1000) {\n    //满足\n    newMsg.isAlarmedClearedFlag = true;\n}\n\nreturn {\n    msg: newMsg,\n    metadata: metadata,\n    msgType: msgType\n};",
+        "tbelScript" : "//清除报警\nvar newMsg = msg;\n\n//标识是否清除报警，重置报警生成时间\nnewMsg.isAlarmedClearedFlag = false;\nnewMsg.ss_lastAlarmCreatedTime = 0;\n\n//首次创建统计记录\nif (msg.ss_lastAlarmClearedTime == 0) {\n    newMsg.ss_lastAlarmClearedTime = new Date(parseInt(metadata.ts)).valueOf();\n    return {\n        msg: newMsg,\n        metadata: metadata,\n        msgType: msgType\n    };\n}\n\n//判断是否达到清除报警时长\nif (metadata.ts - msg.ss_lastAlarmClearedTime >= msg\n    .ss_alarmClearedDuration * 1000) {\n    //满足\n    newMsg.isAlarmedClearedFlag = true;\n    //记录最近一次报警的数据，当前仅记录幅值\n    newMsg.lastAlarmedAmplitude = msg.amplitude;\n}\n\nreturn {\n    msg: newMsg,\n    metadata: metadata,\n    msgType: msgType\n};"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ce855850-1a08-11ee-84c7-59378f85ce5f"
+      },
+      "name" : "清除报警刷新数据",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 651,
+        "layoutY" : 654
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "if (msg.amplitude > 30) {\n    return true;\n} else {\n    return false;\n}",
+        "tbelScript" : "if (msg.isAlarmedClearedFlag == true) {\n    return true;\n} else {\n    return false;\n}"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ce85a670-1a08-11ee-84c7-59378f85ce5f"
+      },
+      "name" : "判断是否清除报警",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 650,
+        "layoutY" : 471
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "if (msg.details !== undefined && JSON.stringify(msg\n        .details) !== '{}') {\n    msg.details.info =\n        \"this alarm data is modified!\"\n    return {\n        msg: msg.details,\n        metadata: metadata,\n        msgType: 'POST_ATTRIBUTES_REQUEST'\n    };\n} else {\n    var newDetais = {}\n\n    return {\n        msg: newDetais,\n        metadata: metadata,\n        msgType: msgType\n    };\n}",
+        "tbelScript" : "//刷新设备服务端属性\nvar newMsg = {};\n\n//生成报警记录更新属性\nif (msg.isAlarmedFlag != null) {\n    if (msg.isAlarmedFlag == true) {\n        //如果本次统计已经生成报警，则重置\n        newMsg.lastAlarmCounts = 0;\n        newMsg.lastAlarmUpdatedValue = 0;\n        newMsg.lastAlarmCreatedTime = 0;\n        newMsg.lastAlarmClearedTime = 0;\n        newMsg.info1 = \"1111\";\n    } else {\n        //否则更新统计信息\n        newMsg.lastAlarmCounts = msg.ss_lastAlarmCounts;\n        newMsg.lastAlarmUpdatedValue = msg\n            .ss_lastAlarmUpdatedValue;\n        newMsg.lastAlarmCreatedTime = msg\n            .ss_lastAlarmCreatedTime;\n        newMsg.lastAlarmClearedTime = msg\n            .ss_lastAlarmClearedTime;\n        newMsg.info1 = \"2222\";\n    }\n}\n\n//清除报警记录更新属性\nif (msg.isAlarmedClearedFlag != null) {\n    if (msg.isAlarmedClearedFlag == true) {\n        //如果本次统计已经生成报警，则重置\n        newMsg.lastAlarmCounts = 0;\n        newMsg.lastAlarmAmplitudeValue = 0;\n        newMsg.lastAlarmCreatedTime = 0;\n        newMsg.lastAlarmClearedTime = 0;\n        newMsg.info2 = \"3333\";\n    } else {\n        //否则更新统计信息\n        newMsg.lastAlarmClearedTime = msg\n            .ss_lastAlarmClearedTime;\n        newMsg.info2 = \"4444\";\n    }\n}\n\nreturn {\n    msg: newMsg,\n    metadata: metadata,\n    msgType: 'POST_ATTRIBUTES_REQUEST'\n};"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ce85f490-1a08-11ee-84c7-59378f85ce5f"
+      },
+      "name" : "更新属性",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 959,
+        "layoutY" : 470
+      },
+      "configuration" : {
+        "scope" : "SERVER_SCOPE",
+        "notifyDevice" : false,
+        "sendAttributesUpdatedNotification" : false
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ce8642b0-1a08-11ee-84c7-59378f85ce5f"
+      },
+      "name" : "更新服务端属性",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgAttributesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 649,
+        "layoutY" : 291
+      },
+      "configuration" : {
+        "scriptLang" : "TBEL",
+        "jsScript" : "if (msg.isAlarmedFlag == true) {\n    return true;\n} else {\n    return false;\n}",
+        "tbelScript" : "if (msg.isAlarmedFlag == true) {\n    return true;\n} else {\n    return false;\n}"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ce8690d0-1a08-11ee-84c7-59378f85ce5f"
+      },
+      "name" : "判断是否产生报警",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsFilterNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 328,
+        "layoutY" : 390
+      },
+      "configuration" : {
+        "scriptLang" : "JS",
+        "jsScript" : "//生成报警\nvar newMsg = msg;\n\n//标识是否产生报警，重置报警清除的时间\nnewMsg.isAlarmedFlag = false;\nnewMsg.ss_lastAlarmClearedTime= 0;\n\n//统计次数+1，更新最新值\nnewMsg.ss_lastAlarmCounts = msg.ss_lastAlarmCounts + 1;\nnewMsg.ss_lastAlarmUpdatedValue = msg.amplitude;\n\n//首次创建统计记录\nif (msg.ss_lastAlarmCreatedTime == 0) {\n    newMsg.ss_lastAlarmCreatedTime = new Date(parseInt(metadata.ts)).valueOf();\n    // newMsg.temTs = new Date(parseInt(metadata.ts)).valueOf();\n    // newMsg.temTest = new Date().valueOf();\n    // newMsg.temDelta = Math.abs(newMsg.temTest - newMsg.temTs);\n    newMsg.test = \"aaaa\";\n    return {\n        msg: newMsg,\n        metadata: metadata,\n        msgType: msgType\n    };\n}\n\n//判断是否达到持续报警时长\nvar metadataTs = new Date(parseInt(metadata.ts)).valueOf();\nif (metadataTs - msg.ss_lastAlarmCreatedTime >= msg\n    .ss_alarmCreatedDuration * 1000) {\n    //满足\n    newMsg.isAlarmedFlag = true;\n}\n\nreturn {\n    msg: newMsg,\n    metadata: metadata,\n    msgType: msgType\n};",
+        "tbelScript" : "//生成报警\nvar newMsg = msg;\n\n//标识是否产生报警，重置报警清除的时间\nnewMsg.isAlarmedFlag = false;\nnewMsg.ss_lastAlarmClearedTime= 0;\n\n//统计次数+1，更新最新值\nnewMsg.ss_lastAlarmCounts = msg.ss_lastAlarmCounts + 1;\nnewMsg.ss_lastAlarmAmplitudeValue = msg.amplitude;\n\n//首次创建统计记录\nif (msg.ss_lastAlarmCreatedTime == 0) {\n    newMsg.ss_lastAlarmCreatedTime = metadata.ts;\n    newMsg.temTest = BigInt(metadata.ts);\n    return {\n        msg: newMsg,\n        metadata: metadata,\n        msgType: msgType\n    };\n}\n\n//判断是否达到持续报警时长\nif (metadata.ts - msg.ss_lastAlarmCreatedTime >= msg\n    .ss_alarmCreatedDuration * 1000) {\n    //满足\n    newMsg.isAlarmedFlag = true;\n}\n\nreturn {\n    msg: newMsg,\n    metadata: metadata,\n    msgType: msgType\n};"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "ce86b7e0-1a08-11ee-84c7-59378f85ce5f"
+      },
+      "name" : "刷新报警生成统计信息",
+      "ruleChainId" : null,
+      "singletonMode" : false,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

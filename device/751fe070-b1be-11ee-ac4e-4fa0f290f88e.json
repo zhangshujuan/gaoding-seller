@@ -1,0 +1,118 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "gateway" : false,
+      "overwriteActivityTime" : false,
+      "description" : ""
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "f85eb1e0-b1b0-11ee-ac4e-4fa0f290f88e"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "2b3aa8c0-1a04-11ee-af0b-3bb8967337dd"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "751fe070-b1be-11ee-ac4e-4fa0f290f88e"
+    },
+    "label" : "黑虎泉北路单位宿舍（原泉城中学）",
+    "name" : "溯源#013",
+    "softwareId" : null,
+    "type" : "default"
+  },
+  "credentials" : {
+    "credentialsId" : "06UiGkDJirEW91YjPxtZ",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1711095066368,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenAppKey",
+      "lastUpdateTs" : 1706854667028,
+      "longValue" : null,
+      "strValue" : "f0a98b14a4d840b183ab9ddb87332689"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenAppSecret",
+      "lastUpdateTs" : 1706854675433,
+      "longValue" : null,
+      "strValue" : "35e38712b2cc6cea5ed3f58e50bb878d"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenChannelNo",
+      "lastUpdateTs" : 1706854683201,
+      "longValue" : null,
+      "strValue" : "1"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenDeviceSerial",
+      "lastUpdateTs" : 1706854696792,
+      "longValue" : null,
+      "strValue" : "AH3285482"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1711095066368,
+      "longValue" : 1711095066367,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1711094443388,
+      "longValue" : 1711094442591,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "[{\"name\":\"黑虎泉北路单位宿舍\",\"lng\":117.0405683872347,\"lat\":36.674667406757735,\"isDefault\":true}]",
+      "key" : "lockPointList",
+      "lastUpdateTs" : 1705131392160,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "splOffsetValue",
+      "lastUpdateTs" : 1705128369414,
+      "longValue" : -25,
+      "strValue" : null
+    } ],
+    "SHARED_SCOPE" : [ ]
+  }
+}

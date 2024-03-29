@@ -1,0 +1,38 @@
+{
+  "entityType" : "DASHBOARD",
+  "entity" : {
+    "assignedCustomers" : null,
+    "configuration" : {
+      "description" : "",
+      "timewindow" : {
+        "aggregation" : {
+          "limit" : 10,
+          "type" : "NONE"
+        },
+        "displayValue" : "",
+        "hideAggInterval" : false,
+        "hideAggregation" : false,
+        "hideInterval" : false,
+        "realtime" : {
+          "interval" : 1000,
+          "timewindowMs" : 60000
+        },
+        "selectedTab" : 0
+      }
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "DASHBOARD",
+      "id" : "3f747170-dc34-11ee-ac4e-4fa0f290f88e"
+    },
+    "image" : null,
+    "mobileHide" : false,
+    "mobileOrder" : null,
+    "name" : "chart",
+    "title" : "chart"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

@@ -26,15 +26,15 @@
     "firmwareId" : null,
     "id" : {
       "entityType" : "DEVICE",
-      "id" : "edf009d0-ecd3-11ee-ac4e-4fa0f290f88e"
+      "id" : "709f83c0-2087-11ee-a460-9f3a6c181add"
     },
     "label" : "",
-    "name" : "DHT22",
+    "name" : "testWS",
     "softwareId" : null,
     "type" : "default"
   },
   "credentials" : {
-    "credentialsId" : "Ufdh69Thteo79taKRAPJ",
+    "credentialsId" : "ah772cxncrGITEO8AgPp",
     "credentialsType" : "ACCESS_TOKEN",
     "credentialsValue" : null
   },
@@ -45,7 +45,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1711612147358,
+      "lastUpdateTs" : 1689148269655,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -53,16 +53,8 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1711612147358,
-      "longValue" : 1711612147358,
-      "strValue" : null
-    }, {
-      "booleanValue" : null,
-      "doubleValue" : null,
-      "jsonValue" : null,
-      "key" : "lastActivityTime",
-      "lastUpdateTs" : 1711611532389,
-      "longValue" : 1711611531402,
+      "lastUpdateTs" : 1689148269655,
+      "longValue" : 1689148269654,
       "strValue" : null
     } ],
     "SHARED_SCOPE" : [ ]

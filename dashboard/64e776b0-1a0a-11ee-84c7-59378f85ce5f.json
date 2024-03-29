@@ -1,0 +1,2455 @@
+{
+  "entityType" : "DASHBOARD",
+  "entity" : {
+    "assignedCustomers" : [ {
+      "customerId" : {
+        "entityType" : "CUSTOMER",
+        "id" : "a725c6d0-1a0a-11ee-84c7-59378f85ce5f"
+      },
+      "title" : "[C5087]风电叶片在线监测",
+      "public" : false
+    } ],
+    "configuration" : {
+      "description" : "",
+      "widgets" : {
+        "bc3d6764-9d53-f084-f8f2-32a13348fe9a" : {
+          "isSystemType" : true,
+          "bundleAlias" : "cards",
+          "typeAlias" : "markdown_card",
+          "type" : "latest",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 5,
+          "sizeY" : 3.5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "3960fe06-bf03-e641-92b9-aa9dfe920c51",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "active",
+                "type" : "attribute",
+                "label" : "active",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.955698737787281,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : true,
+                "postFuncBody" : "var data\nif(value == 'true')\n{\n    data = '正常'\n}else\n{\n    data = '异常'\n}\nreturn data;"
+              }, {
+                "name" : "name",
+                "type" : "attribute",
+                "label" : "name",
+                "color" : "#4caf50",
+                "settings" : { },
+                "_hash" : 0.07655089349610011
+              }, {
+                "name" : "state",
+                "type" : "attribute",
+                "label" : "state",
+                "color" : "#E91404",
+                "settings" : { },
+                "_hash" : 0.613085490669842,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : true,
+                "postFuncBody" : "var data\nif(value == 'true')\n{\n    data = '正常'\n}else\n{\n    data = '异常'\n}\nreturn data;"
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1684376633942,
+                  "endTimeMs" : 1684463033942
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "#222223",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "useMarkdownTextFunction" : true,
+              "markdownTextFunction" : "let arr = data\n\n // 排序函数\n function objArraySort(objArr, key) {\n     let result = objArr.slice(0);\n     return result.sort((a, b) => a[key].substring(0, 1) -\n         b[key].substring(0, 1));\n }\n\n let newData = objArraySort(arr, 'entityName')\n\n function classtpye(type) {\n     if (type == '正常') {\n         return \"description\"\n     } else {\n         return \"descriptionred\"\n     }\n }\n for (let i = 0; i < newData.length; i++) {\n     if (newData[i].state == '正常' && newData[i].active ==\n         '正常') {\n         newData[i].active = '正常'\n         newData[i].class = 'normal'\n     } else {\n         newData[i].active = '异常'\n          newData[i].class = 'abnormal'\n     }\n }\n\n return `\n <div class='card' id=\"energyConsumptionHtmlCard\">\n    <div class='content'>\n        <div class='upper-bar'>\n            <video loop muted autoplay>\n             <source src=\"http://192.168.116.100:8801/bg.mp4\" type=\"video/mp4\"> type=\"video/mp4\">\n            </video>\n            <div class='image-shade'>\n                <h1>SonoEdge</h1>\n                <div class='value'>声发射-风电叶片状态监测系统</div>\n            </div>\n        </div>\n        <div class='lower-bar'>\n            <div id='A' class='element'>\n                <div class='icon-container'>\n                    <div class='material-icons icon'>flash_on</div>\n                </div>\n                <span class='description'>${newData.at(0)[\"name\"]}:</span>\n                <span id=\"element1\" class=${newData[0].class}>${newData[0][\"active\"]}</span>\n            </div>\n            <div id='B' class='element'>\n                <div class='icon-container'>\n                    <div class='material-icons icon'>flash_on</div>\n                </div>\n                <span class='description'>${newData.at(1)[\"name\"]}:</span>\n                <span id=\"element2\" class=${newData[1].class}>${newData[1][\"active\"]}</span>\n            </div>\n            <div id='C' class='element'>\n                <div class='icon-container'>\n                    <div class='material-icons icon'>flash_on</div>\n                </div>\n                <span class='description'>${newData.at(2)[\"name\"]}:</span>\n                <span id=\"element3\" class=${newData[2].class}>${newData[2][\"active\"]}</span>\n            </div>\n             <div id='D' class='element'>\n                <div class='icon-container'>\n                    <div class='material-icons icon'>flash_on</div>\n                </div>\n                <span class='description'>${newData.at(3)[\"name\"]}:</span>\n                <span id=\"element4\" class=${newData[3].class}>${newData[3][\"active\"]}</span>\n            </div>\n            <div id='E' class='element'>\n                <div class='icon-container'>\n                    <div class='material-icons icon'>flash_on</div>\n                </div>\n                <span class='description'>${newData.at(4)[\"name\"]}:</span>\n                <span id=\"element5\" class=${newData[4].class}>${newData[4][\"active\"]}</span>\n            </div>\n            <div id='F' class='element'>\n                <div class='icon-container'>\n                    <div class='material-icons icon'>flash_on</div>\n                </div>\n                <span class='description'>${newData.at(5)[\"name\"]}:</span>\n                <span id=\"element6\" class=${newData[5].class}>${newData[5][\"active\"]}</span>\n            </div>\n       </div>\n    </div>\n</div>\n`\n",
+              "applyDefaultMarkdownStyle" : true,
+              "markdownCss" : ".card {\r\n    position: relative;\r\n    padding: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n}\r\n\r\n.card .content {\r\n    height: 100%;\r\n}\r\n\r\n.card .upper-bar {\r\n    position: relative;\r\n    z-index: 0;\r\n    overflow: hidden;\r\n    height: 65%;\r\n    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .26);\r\n    color: #fff;\r\n}\r\n\r\n.card .lower-bar {\r\n    height: 35%;\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n    justify-content: space-around;\r\n    flex-wrap: wrap;\r\n    margin-left: 30px;\r\n    \r\n}\r\n\r\n.card .lower-bar .element {\r\n    display: flex;\r\n    flex-direction: row;\r\n    width: 33.33%;\r\n    \r\n}\r\n\r\n.card .right-top-bar {\r\n    position: absolute;\r\n    top: 10px;\r\n    right: 10px;\r\n    display: flex;\r\n    flex-direction: row;\r\n    align-items: center;\r\n}\r\n\r\n.card .right-top-bar .icon-container {\r\n    display: none;\r\n    box-shadow: 0px 0px 4px 2px rgba(255, 255, 255, .26);\r\n    cursor: pointer;\r\n    border: 3px solid #fff;\r\n    color: #fff;\r\n    background-color: rgb(0, 0, 0);\r\n}\r\n\r\n.card .right-top-bar .icon-container .icon {\r\n    color: #fff;\r\n}\r\n\r\n.card .right-top-bar .icon-container:hover {\r\n    border: 3px solid rgb(255, 157, 12);\r\n    color: rgb(255, 157, 12);\r\n    background-color: #fff;\r\n}\r\n\r\n.card .right-top-bar .icon-container:hover .icon {\r\n    color: rgb(255, 157, 12);\r\n}\r\n\r\n.card .image-shade {\r\n    width: 100%;\r\n    height: 100%;\r\n    padding-left: 16px;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    background-color: rgba(0, 0, 0, .1);\r\n    z-index: 0;\r\n}\r\n\r\n.card h1 {\r\n    margin: 0;\r\n    font-size: 20px;\r\n    font-weight: bold;\r\n    line-height: 30px;\r\n}\r\n\r\n.card .icon-container {\r\n    height: 30px;\r\n    width: 30px;\r\n    border-radius: 50%;\r\n    border: 3px solid rgb(60, 179, 113);\r\n    text-align: center;\r\n    \r\n}\r\n\r\n.card .description {\r\n    margin-left: 10px;\r\n    font-size: 20px;\r\n    font-weight: 500;\r\n    color: rgb(60, 179, 113);\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n.card .abnormal {\r\n    margin-left: 10px;\r\n    font-size: 20px;\r\n    font-weight: 500;\r\n    color: rgb(255, 0, 0);\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n.card .normal {\r\n    margin-left: 10px;\r\n    font-size: 20px;\r\n    font-weight: 500;\r\n    color: rgb(60, 179, 113);\r\n    display: flex;\r\n    align-items: center;\r\n}\r\n\r\n.card .value {\r\n    font-size: 40px;\r\n    font-weight: 300;\r\n    letter-spacing: -2px;\r\n}\r\n\r\n.card .icon {\r\n    line-height: 30px;\r\n    color: rgb(255, 157, 12);\r\n}\r\n\r\n.card video {\r\n    position: absolute;\r\n    top: 75%;\r\n    left: 0;\r\n    width: 160%;\r\n    z-index: -1;\r\n    transform: translateY(-70%);\r\n}\r\n\r\n.card .element {\r\n    transition: background-color 0.5s ease;\r\n}\r\n\r\n.card .element:hover {\r\n    border-radius: 4px;\r\n    cursor: pointer;\r\n    background-color: rgb(91, 91, 91);\r\n}"
+            },
+            "title" : "New Markdown/HTML Card",
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "showLegend" : false,
+            "useDashboardTimewindow" : true,
+            "actions" : {
+              "elementClick" : [ {
+                "name" : "A",
+                "icon" : "more_horiz",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "openDashboardState",
+                "targetDashboardStateId" : "通道1",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openRightLayout" : false,
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "614a9625-9bee-7093-d423-76d7e12ff7a1"
+              }, {
+                "name" : "B",
+                "icon" : "more_horiz",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "openDashboardState",
+                "targetDashboardStateId" : "通道2",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openRightLayout" : false,
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "9f0f9a19-ade8-deaa-71bb-58b3c5674848"
+              }, {
+                "name" : "C",
+                "icon" : "more_horiz",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "openDashboardState",
+                "targetDashboardStateId" : "通道3",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openRightLayout" : false,
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "027d111b-9d87-bf40-c706-ca29a38198d2"
+              }, {
+                "name" : "D",
+                "icon" : "more_horiz",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "openDashboardState",
+                "targetDashboardStateId" : "通道4",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openRightLayout" : false,
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "c37768a7-0584-72c8-545a-a8b5c269e5d2"
+              }, {
+                "name" : "E",
+                "icon" : "more_horiz",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "openDashboardState",
+                "targetDashboardStateId" : "通道5",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openRightLayout" : false,
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "c5733f7e-4d17-a7de-bebc-5b9c34392083"
+              }, {
+                "name" : "F",
+                "icon" : "more_horiz",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "openDashboardState",
+                "targetDashboardStateId" : "通道6",
+                "setEntityId" : true,
+                "stateEntityParamName" : null,
+                "openRightLayout" : false,
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "a3408421-5ba1-750c-a666-01e2254c5fe7"
+              } ]
+            },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : ""
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "bc3d6764-9d53-f084-f8f2-32a13348fe9a"
+        },
+        "feaa0397-bcf3-c328-a5a2-6c406ec40d3a" : {
+          "isSystemType" : false,
+          "bundleAlias" : "cry",
+          "typeAlias" : "sixchannelchart",
+          "type" : "latest",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "1e9d389c-2fbe-61b6-957d-d7de399d2c0d",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "waveData",
+                "type" : "timeseries",
+                "label" : "waveData",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.475073539128819
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            }, {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "bb0ed3ad-d6bf-3ed8-b48b-c140889b628e",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "waveData",
+                "type" : "timeseries",
+                "label" : "waveData 2",
+                "color" : "#4caf50",
+                "settings" : { },
+                "_hash" : 0.45435889671963836
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            }, {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "84aea5b0-f8fc-b29b-99ba-1c2ea23edffc",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "waveData",
+                "type" : "timeseries",
+                "label" : "waveData 3",
+                "color" : "#f44336",
+                "settings" : { },
+                "_hash" : 0.24761211838616282
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            }, {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "317ed15e-0812-e9c7-6239-bacc6a618ba6",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "waveData",
+                "type" : "timeseries",
+                "label" : "waveData 4",
+                "color" : "#ffc107",
+                "settings" : { },
+                "_hash" : 0.3153672876571334
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            }, {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "574d1fd5-1fef-0185-5686-5f4d533c44cf",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "waveData",
+                "type" : "timeseries",
+                "label" : "waveData 5",
+                "color" : "#607d8b",
+                "settings" : { },
+                "_hash" : 0.21621839353299532
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            }, {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "39cd30b2-c445-0f1b-5084-93fca452609d",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "waveData",
+                "type" : "timeseries",
+                "label" : "waveData 6",
+                "color" : "#9c27b0",
+                "settings" : { },
+                "_hash" : 0.7307212189503496
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1684647113870,
+                  "endTimeMs" : 1684733513870
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "#222323",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : { },
+            "title" : "New SixChannelChart",
+            "useDashboardTimewindow" : true,
+            "showTitleIcon" : false,
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "showLegend" : false
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "feaa0397-bcf3-c328-a5a2-6c406ec40d3a"
+        },
+        "ae75502b-17cc-9587-3318-410f36bcaf06" : {
+          "isSystemType" : true,
+          "bundleAlias" : "alarm_widgets",
+          "typeAlias" : "alarms_table",
+          "type" : "alarm",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 10.5,
+          "sizeY" : 6.5,
+          "config" : {
+            "timewindow" : {
+              "realtime" : {
+                "interval" : 1000,
+                "timewindowMs" : 86400000
+              },
+              "aggregation" : {
+                "type" : "NONE",
+                "limit" : 200
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#222323",
+            "color" : "#ffffff",
+            "padding" : "4px",
+            "settings" : {
+              "alarmsTitle" : "风叶报警信息",
+              "enableSelection" : true,
+              "enableSearch" : true,
+              "enableSelectColumnDisplay" : true,
+              "enableFilter" : true,
+              "enableStickyHeader" : true,
+              "enableStickyAction" : false,
+              "reserveSpaceForHiddenAction" : "true",
+              "displayDetails" : true,
+              "allowAcknowledgment" : true,
+              "allowClear" : true,
+              "allowAssign" : true,
+              "displayPagination" : true,
+              "defaultPageSize" : 10,
+              "defaultSortOrder" : "-createdTime",
+              "useRowStyleFunction" : false
+            },
+            "title" : "New Alarms table",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400,
+              "padding" : "5px 10px 5px 10px"
+            },
+            "useDashboardTimewindow" : false,
+            "showLegend" : false,
+            "alarmSource" : {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "3960fe06-bf03-e641-92b9-aa9dfe920c51",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "originator",
+                "type" : "alarm",
+                "label" : "发起者",
+                "color" : "#ffc107",
+                "settings" : { },
+                "_hash" : 0.9456842368549296
+              }, {
+                "name" : "createdTime",
+                "type" : "alarm",
+                "label" : "创建时间",
+                "color" : "#4caf50",
+                "settings" : { },
+                "_hash" : 0.7444728390396689
+              }, {
+                "name" : "severity",
+                "type" : "alarm",
+                "label" : "严重程度",
+                "color" : "#f44336",
+                "settings" : { },
+                "_hash" : 0.8687663314730849
+              }, {
+                "name" : "status",
+                "type" : "alarm",
+                "label" : "状态",
+                "color" : "#ffc107",
+                "settings" : { },
+                "_hash" : 0.8725353179851605
+              }, {
+                "name" : "details.count",
+                "type" : "alarm",
+                "label" : "计数",
+                "color" : "#607d8b",
+                "settings" : { },
+                "_hash" : 0.2049564265862942,
+                "aggregationType" : null,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            },
+            "alarmsPollingInterval" : 5,
+            "showTitleIcon" : true,
+            "titleIcon" : "apps_outage",
+            "iconColor" : "#ff0000",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "widgetStyle" : { },
+            "displayTimewindow" : true,
+            "actions" : {
+              "rowClick" : [ {
+                "name" : "数据详情",
+                "icon" : "more_horiz",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "custom",
+                "customFunction" : "console.log(additionalParams.alarm)\n\n    \nwindow.localStorage.setItem('detail',JSON.stringify(additionalParams.alarm.details))\n",
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "9aca78d7-7c74-2127-eae1-d537741eed5f"
+              } ],
+              "actionCellButton" : [ ]
+            },
+            "datasources" : [ ],
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "alarmFilterConfig" : {
+              "statusList" : [ "ACTIVE", "CLEARED", "ACK", "UNACK" ],
+              "severityList" : [ "CRITICAL", "MAJOR", "MINOR", "WARNING" ],
+              "typeList" : [ ],
+              "searchPropagatedAlarms" : true
+            }
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "ae75502b-17cc-9587-3318-410f36bcaf06"
+        },
+        "e90127fd-c215-2b2b-46ed-f2569023c5b2" : {
+          "isSystemType" : false,
+          "bundleAlias" : "cry",
+          "typeAlias" : "crysinglewavechart2",
+          "type" : "latest",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "3960fe06-bf03-e641-92b9-aa9dfe920c51",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "waveData",
+                "type" : "timeseries",
+                "label" : "waveData",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.7624181326510371
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1684733429686,
+                  "endTimeMs" : 1684819829686
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "#222323",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : { },
+            "title" : "New CRYSingleWaveChart",
+            "useDashboardTimewindow" : true,
+            "showTitleIcon" : false,
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "showLegend" : false
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "e90127fd-c215-2b2b-46ed-f2569023c5b2"
+        },
+        "9a0ac169-ca1b-c2e8-26be-bda3bf774edb" : {
+          "isSystemType" : false,
+          "bundleAlias" : "cry",
+          "typeAlias" : "fftchart",
+          "type" : "latest",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "bb0ed3ad-d6bf-3ed8-b48b-c140889b628e",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "waveData",
+                "type" : "timeseries",
+                "label" : "waveData",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.735344735991208
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1684736317010,
+                  "endTimeMs" : 1684822717010
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "#FFFFFF",
+            "color" : "rgba(255, 255, 255, 0.87)",
+            "padding" : "8px",
+            "settings" : { },
+            "title" : "New FFTChart",
+            "useDashboardTimewindow" : true,
+            "showTitleIcon" : false,
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "showLegend" : false
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "9a0ac169-ca1b-c2e8-26be-bda3bf774edb"
+        },
+        "0d7b3e7d-1192-baf1-c786-4103a32d94e2" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "buttonText" : "重启系统",
+              "oneWayElseTwoWay" : true,
+              "methodName" : "restartsystem",
+              "methodParams" : "{}",
+              "requestTimeout" : 5000,
+              "showError" : false,
+              "requestPersistent" : false,
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false,
+                "bgColor" : null,
+                "textColor" : null
+              }
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "bb0ed3ad-d6bf-3ed8-b48b-c140889b628e" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "0d7b3e7d-1192-baf1-c786-4103a32d94e2"
+        },
+        "72406a5e-c3a5-1ebf-1651-687ba68a756e" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "buttonText" : "重启采集卡",
+              "oneWayElseTwoWay" : true,
+              "methodName" : "restartcard",
+              "methodParams" : "{}",
+              "requestTimeout" : 5000,
+              "showError" : false,
+              "requestPersistent" : false,
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false,
+                "bgColor" : null,
+                "textColor" : null
+              }
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "bb0ed3ad-d6bf-3ed8-b48b-c140889b628e" ],
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : ""
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "72406a5e-c3a5-1ebf-1651-687ba68a756e"
+        },
+        "5c2ed9d0-afa0-8dfa-ceb7-508d31fe5bfd" : {
+          "isSystemType" : false,
+          "bundleAlias" : "aaa",
+          "typeAlias" : "simplerpc",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : true,
+            "backgroundColor" : "#FFFFFF",
+            "color" : "#0F0F0F",
+            "padding" : "0px",
+            "settings" : {
+              "switchPanelBackgroundColor" : "#b71c1c",
+              "gpioList" : [ {
+                "pin" : 1,
+                "label" : "GPIO 1",
+                "row" : 0,
+                "col" : 0,
+                "_uniqueKey" : 0
+              }, {
+                "pin" : 2,
+                "label" : "GPIO 2",
+                "row" : 0,
+                "col" : 1,
+                "_uniqueKey" : 1
+              }, {
+                "pin" : 3,
+                "label" : "GPIO 3",
+                "row" : 1,
+                "col" : 0,
+                "_uniqueKey" : 2
+              } ],
+              "requestTimeout" : 3000,
+              "gpioStatusRequest" : {
+                "method" : "getGpioStatus",
+                "paramsBody" : "{}"
+              },
+              "gpioStatusChangeRequest" : {
+                "method" : "setGpioStatus",
+                "paramsBody" : "{\n   \"pin\": \"{$pin}\",\n   \"enabled\": \"{$enabled}\"\n}"
+              },
+              "parseGpioStatusFunction" : "return body[pin] === true;"
+            },
+            "title" : "New SimpleRPC",
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "1e9d389c-2fbe-61b6-957d-d7de399d2c0d" ],
+            "showTitleIcon" : false,
+            "titleTooltip" : "",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "showLegend" : false
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "5c2ed9d0-afa0-8dfa-ceb7-508d31fe5bfd"
+        },
+        "581147ef-a6bc-ce05-1b5a-d97084efa892" : {
+          "isSystemType" : false,
+          "bundleAlias" : "cry",
+          "typeAlias" : "fftchart",
+          "type" : "latest",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "1e9d389c-2fbe-61b6-957d-d7de399d2c0d",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "waveData",
+                "type" : "timeseries",
+                "label" : "waveData",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.10323271866876849
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1684832235229,
+                  "endTimeMs" : 1684918635229
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : { },
+            "title" : "",
+            "useDashboardTimewindow" : true,
+            "showTitleIcon" : false,
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "showLegend" : false,
+            "titleTooltip" : "",
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            }
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "581147ef-a6bc-ce05-1b5a-d97084efa892"
+        },
+        "dca67dc1-bb71-ff9e-f3e2-79fe652b2196" : {
+          "isSystemType" : false,
+          "bundleAlias" : "aaa",
+          "typeAlias" : "simplerpc",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "parseGpioStatusFunction" : "return body[pin] === true;",
+              "gpioStatusChangeRequest" : {
+                "method" : "setGpioStatus",
+                "paramsBody" : "{\n   \"pin\": \"{$pin}\",\n   \"enabled\": \"{$enabled}\"\n}"
+              },
+              "requestTimeout" : 500,
+              "switchPanelBackgroundColor" : "#b71c1c",
+              "gpioStatusRequest" : {
+                "method" : "getGpioStatus",
+                "paramsBody" : "{}"
+              },
+              "gpioList" : [ {
+                "pin" : 1,
+                "label" : "GPIO 1",
+                "row" : 0,
+                "col" : 0,
+                "_uniqueKey" : 0
+              }, {
+                "pin" : 2,
+                "label" : "GPIO 2",
+                "row" : 0,
+                "col" : 1,
+                "_uniqueKey" : 1
+              }, {
+                "pin" : 3,
+                "label" : "GPIO 3",
+                "row" : 1,
+                "col" : 0,
+                "_uniqueKey" : 2
+              } ]
+            },
+            "title" : "New SimpleRPC",
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "84aea5b0-f8fc-b29b-99ba-1c2ea23edffc" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "dca67dc1-bb71-ff9e-f3e2-79fe652b2196"
+        },
+        "8b4b82fb-097a-080a-e49d-2ed3775a79df" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "buttonText" : "重启采集卡",
+              "oneWayElseTwoWay" : true,
+              "methodName" : "restartcard",
+              "methodParams" : "{}",
+              "requestTimeout" : 5000,
+              "showError" : false,
+              "requestPersistent" : false,
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false
+              }
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "84aea5b0-f8fc-b29b-99ba-1c2ea23edffc" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "8b4b82fb-097a-080a-e49d-2ed3775a79df"
+        },
+        "1b374b67-900c-48d3-d8b8-8450d57f6ac5" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "buttonText" : "重启系统",
+              "oneWayElseTwoWay" : true,
+              "methodName" : "restartsystem",
+              "methodParams" : "{}",
+              "requestTimeout" : 5000,
+              "showError" : false,
+              "requestPersistent" : false,
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false
+              }
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "84aea5b0-f8fc-b29b-99ba-1c2ea23edffc" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "1b374b67-900c-48d3-d8b8-8450d57f6ac5"
+        },
+        "c29723af-a431-cf30-cd9b-34e17a2654d9" : {
+          "isSystemType" : false,
+          "bundleAlias" : "cry",
+          "typeAlias" : "fftchart",
+          "type" : "latest",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "84aea5b0-f8fc-b29b-99ba-1c2ea23edffc",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "waveData",
+                "type" : "timeseries",
+                "label" : "waveData",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.1418231054260053
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1684895877668,
+                  "endTimeMs" : 1684982277668
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : { },
+            "title" : "New FFTChart",
+            "useDashboardTimewindow" : true,
+            "showTitleIcon" : false,
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "showLegend" : false
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "c29723af-a431-cf30-cd9b-34e17a2654d9"
+        },
+        "611d1ea3-6f7c-d49e-344d-bfc947f0c7ad" : {
+          "isSystemType" : false,
+          "bundleAlias" : "aaa",
+          "typeAlias" : "simplerpc",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "parseGpioStatusFunction" : "return body[pin] === true;",
+              "gpioStatusChangeRequest" : {
+                "method" : "setGpioStatus",
+                "paramsBody" : "{\n   \"pin\": \"{$pin}\",\n   \"enabled\": \"{$enabled}\"\n}"
+              },
+              "requestTimeout" : 500,
+              "switchPanelBackgroundColor" : "#b71c1c",
+              "gpioStatusRequest" : {
+                "method" : "getGpioStatus",
+                "paramsBody" : "{}"
+              },
+              "gpioList" : [ {
+                "pin" : 1,
+                "label" : "GPIO 1",
+                "row" : 0,
+                "col" : 0,
+                "_uniqueKey" : 0
+              }, {
+                "pin" : 2,
+                "label" : "GPIO 2",
+                "row" : 0,
+                "col" : 1,
+                "_uniqueKey" : 1
+              }, {
+                "pin" : 3,
+                "label" : "GPIO 3",
+                "row" : 1,
+                "col" : 0,
+                "_uniqueKey" : 2
+              } ]
+            },
+            "title" : "New SimpleRPC",
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "317ed15e-0812-e9c7-6239-bacc6a618ba6" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "611d1ea3-6f7c-d49e-344d-bfc947f0c7ad"
+        },
+        "6f0365f5-0230-b7aa-b60c-e3fa4b49d1c1" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "buttonText" : "重启采集卡",
+              "oneWayElseTwoWay" : true,
+              "methodName" : "restartcard",
+              "methodParams" : "{}",
+              "requestTimeout" : 5000,
+              "showError" : false,
+              "requestPersistent" : false,
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false
+              }
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "317ed15e-0812-e9c7-6239-bacc6a618ba6" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "6f0365f5-0230-b7aa-b60c-e3fa4b49d1c1"
+        },
+        "11d7520e-71d0-cb64-c9ba-d6faad5f785a" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "buttonText" : "重启系统",
+              "oneWayElseTwoWay" : true,
+              "methodName" : "restartsystem",
+              "methodParams" : "{}",
+              "requestTimeout" : 5000,
+              "showError" : false,
+              "requestPersistent" : false,
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false
+              }
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "317ed15e-0812-e9c7-6239-bacc6a618ba6" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "11d7520e-71d0-cb64-c9ba-d6faad5f785a"
+        },
+        "96797a45-76a4-972a-7f9a-37de58bd7804" : {
+          "isSystemType" : false,
+          "bundleAlias" : "cry",
+          "typeAlias" : "fftchart",
+          "type" : "latest",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "317ed15e-0812-e9c7-6239-bacc6a618ba6",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "waveData",
+                "type" : "timeseries",
+                "label" : "waveData",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.46414304350775626
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1684896004877,
+                  "endTimeMs" : 1684982404877
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : { },
+            "title" : "New FFTChart",
+            "useDashboardTimewindow" : true,
+            "showTitleIcon" : false,
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "showLegend" : false
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "96797a45-76a4-972a-7f9a-37de58bd7804"
+        },
+        "75bdac77-b2a1-c163-960c-d61cbf359c09" : {
+          "isSystemType" : false,
+          "bundleAlias" : "aaa",
+          "typeAlias" : "simplerpc",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "parseGpioStatusFunction" : "return body[pin] === true;",
+              "gpioStatusChangeRequest" : {
+                "method" : "setGpioStatus",
+                "paramsBody" : "{\n   \"pin\": \"{$pin}\",\n   \"enabled\": \"{$enabled}\"\n}"
+              },
+              "requestTimeout" : 500,
+              "switchPanelBackgroundColor" : "#b71c1c",
+              "gpioStatusRequest" : {
+                "method" : "getGpioStatus",
+                "paramsBody" : "{}"
+              },
+              "gpioList" : [ {
+                "pin" : 1,
+                "label" : "GPIO 1",
+                "row" : 0,
+                "col" : 0,
+                "_uniqueKey" : 0
+              }, {
+                "pin" : 2,
+                "label" : "GPIO 2",
+                "row" : 0,
+                "col" : 1,
+                "_uniqueKey" : 1
+              }, {
+                "pin" : 3,
+                "label" : "GPIO 3",
+                "row" : 1,
+                "col" : 0,
+                "_uniqueKey" : 2
+              } ]
+            },
+            "title" : "New SimpleRPC",
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "574d1fd5-1fef-0185-5686-5f4d533c44cf" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "75bdac77-b2a1-c163-960c-d61cbf359c09"
+        },
+        "56c856fa-eb79-0beb-b760-810f12932166" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "buttonText" : "重启采集卡",
+              "oneWayElseTwoWay" : true,
+              "methodName" : "restartcard",
+              "methodParams" : "{}",
+              "requestTimeout" : 5000,
+              "showError" : false,
+              "requestPersistent" : false,
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false
+              }
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "574d1fd5-1fef-0185-5686-5f4d533c44cf" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "56c856fa-eb79-0beb-b760-810f12932166"
+        },
+        "3546e5dc-f05a-0d28-1779-2d5d710c4872" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "buttonText" : "重启系统",
+              "oneWayElseTwoWay" : true,
+              "methodName" : "restartsystem",
+              "methodParams" : "{}",
+              "requestTimeout" : 5000,
+              "showError" : false,
+              "requestPersistent" : false,
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false
+              }
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "574d1fd5-1fef-0185-5686-5f4d533c44cf" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "3546e5dc-f05a-0d28-1779-2d5d710c4872"
+        },
+        "31fde698-9dc5-f91d-c055-ad2129d6e383" : {
+          "isSystemType" : false,
+          "bundleAlias" : "cry",
+          "typeAlias" : "fftchart",
+          "type" : "latest",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "574d1fd5-1fef-0185-5686-5f4d533c44cf",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "waveData",
+                "type" : "timeseries",
+                "label" : "waveData",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.17839758710055653
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1684896521276,
+                  "endTimeMs" : 1684982921276
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : { },
+            "title" : "New FFTChart",
+            "useDashboardTimewindow" : true,
+            "showTitleIcon" : false,
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "showLegend" : false
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "31fde698-9dc5-f91d-c055-ad2129d6e383"
+        },
+        "2e1e0458-1a26-3b69-ca21-a7cc10575af8" : {
+          "isSystemType" : false,
+          "bundleAlias" : "aaa",
+          "typeAlias" : "simplerpc",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "parseGpioStatusFunction" : "return body[pin] === true;",
+              "gpioStatusChangeRequest" : {
+                "method" : "setGpioStatus",
+                "paramsBody" : "{\n   \"pin\": \"{$pin}\",\n   \"enabled\": \"{$enabled}\"\n}"
+              },
+              "requestTimeout" : 500,
+              "switchPanelBackgroundColor" : "#b71c1c",
+              "gpioStatusRequest" : {
+                "method" : "getGpioStatus",
+                "paramsBody" : "{}"
+              },
+              "gpioList" : [ {
+                "pin" : 1,
+                "label" : "GPIO 1",
+                "row" : 0,
+                "col" : 0,
+                "_uniqueKey" : 0
+              }, {
+                "pin" : 2,
+                "label" : "GPIO 2",
+                "row" : 0,
+                "col" : 1,
+                "_uniqueKey" : 1
+              }, {
+                "pin" : 3,
+                "label" : "GPIO 3",
+                "row" : 1,
+                "col" : 0,
+                "_uniqueKey" : 2
+              } ]
+            },
+            "title" : "参数设置",
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "39cd30b2-c445-0f1b-5084-93fca452609d" ],
+            "showTitleIcon" : false,
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "showLegend" : false,
+            "titleTooltip" : "",
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            }
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "2e1e0458-1a26-3b69-ca21-a7cc10575af8"
+        },
+        "1c7c16a8-02b9-84f7-a4fc-019531650d10" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "buttonText" : "重启采集卡",
+              "oneWayElseTwoWay" : true,
+              "methodName" : "restartcard",
+              "methodParams" : "{}",
+              "requestTimeout" : 5000,
+              "showError" : false,
+              "requestPersistent" : false,
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false
+              }
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "39cd30b2-c445-0f1b-5084-93fca452609d" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "1c7c16a8-02b9-84f7-a4fc-019531650d10"
+        },
+        "2d662faf-aa83-cc4a-fd66-59ab05df717e" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "buttonText" : "重启系统",
+              "oneWayElseTwoWay" : true,
+              "methodName" : "restartsystem",
+              "methodParams" : "{}",
+              "requestTimeout" : 5000,
+              "showError" : false,
+              "requestPersistent" : false,
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false
+              }
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "39cd30b2-c445-0f1b-5084-93fca452609d" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "2d662faf-aa83-cc4a-fd66-59ab05df717e"
+        },
+        "149236e6-0d77-44d3-63d6-1b8f97d8f65a" : {
+          "isSystemType" : false,
+          "bundleAlias" : "cry",
+          "typeAlias" : "fftchart",
+          "type" : "latest",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 7.5,
+          "sizeY" : 3,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "39cd30b2-c445-0f1b-5084-93fca452609d",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "waveData",
+                "type" : "timeseries",
+                "label" : "waveData",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.7568095241169801
+              } ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1684896630749,
+                  "endTimeMs" : 1684983030749
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : { },
+            "title" : "New FFTChart",
+            "useDashboardTimewindow" : true,
+            "showTitleIcon" : false,
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "showLegend" : false
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "149236e6-0d77-44d3-63d6-1b8f97d8f65a"
+        },
+        "ae00b514-7ef7-95e5-b58d-da94f5a1b995" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "buttonText" : "重启采集卡",
+              "oneWayElseTwoWay" : true,
+              "methodName" : "restartcard",
+              "methodParams" : "{}",
+              "requestTimeout" : 5000,
+              "showError" : false,
+              "requestPersistent" : false,
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false
+              }
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "1e9d389c-2fbe-61b6-957d-d7de399d2c0d" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "ae00b514-7ef7-95e5-b58d-da94f5a1b995"
+        },
+        "0e3da89f-795d-b811-2dcd-193e1f72916d" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "buttonText" : "重启系统",
+              "oneWayElseTwoWay" : true,
+              "methodName" : "restartsystem",
+              "methodParams" : "{}",
+              "requestTimeout" : 5000,
+              "showError" : false,
+              "requestPersistent" : false,
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false
+              }
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "1e9d389c-2fbe-61b6-957d-d7de399d2c0d" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "0e3da89f-795d-b811-2dcd-193e1f72916d"
+        },
+        "7a5fc3fd-ad83-24c0-b4e3-85cff17d2a1e" : {
+          "isSystemType" : false,
+          "bundleAlias" : "aaa",
+          "typeAlias" : "simplerpc",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "switchPanelBackgroundColor" : "#b71c1c",
+              "gpioList" : [ {
+                "pin" : 1,
+                "label" : "GPIO 1",
+                "row" : 0,
+                "col" : 0,
+                "_uniqueKey" : 0
+              }, {
+                "pin" : 2,
+                "label" : "GPIO 2",
+                "row" : 0,
+                "col" : 1,
+                "_uniqueKey" : 1
+              }, {
+                "pin" : 3,
+                "label" : "GPIO 3",
+                "row" : 1,
+                "col" : 0,
+                "_uniqueKey" : 2
+              } ],
+              "requestTimeout" : 5000,
+              "gpioStatusRequest" : {
+                "method" : "getGpioStatus",
+                "paramsBody" : "{}"
+              },
+              "gpioStatusChangeRequest" : {
+                "method" : "setGpioStatus",
+                "paramsBody" : "{\n   \"pin\": \"{$pin}\",\n   \"enabled\": \"{$enabled}\"\n}"
+              },
+              "parseGpioStatusFunction" : "return body[pin] === true;"
+            },
+            "title" : "New SimpleRPC",
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "bb0ed3ad-d6bf-3ed8-b48b-c140889b628e" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "7a5fc3fd-ad83-24c0-b4e3-85cff17d2a1e"
+        },
+        "498b737e-4bfc-a451-dcb4-64030da8dccf" : {
+          "isSystemType" : false,
+          "bundleAlias" : "cry",
+          "typeAlias" : "_",
+          "type" : "latest",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 5,
+          "sizeY" : 3.5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "3960fe06-bf03-e641-92b9-aa9dfe920c51",
+              "filterId" : null,
+              "dataKeys" : [ ],
+              "alarmFilterConfig" : {
+                "statusList" : [ "ACTIVE" ]
+              }
+            } ],
+            "timewindow" : {
+              "displayValue" : "",
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 1,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "history" : {
+                "historyType" : 0,
+                "interval" : 1000,
+                "timewindowMs" : 60000,
+                "fixedTimewindow" : {
+                  "startTimeMs" : 1685263642095,
+                  "endTimeMs" : 1685350042095
+                },
+                "quickInterval" : "CURRENT_DAY"
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : false,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "markdownTextPattern" : "### Markdown/HTML card\n - **Current entity**: ${entityName}.\n - **Current value**: ${Random}.",
+              "markdownTextFunction" : "return '# Some title\\n - Entity name: ' + data[0]['entityName'];",
+              "useMarkdownTextFunction" : false
+            },
+            "title" : "New 详情显示",
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "showLegend" : false,
+            "useDashboardTimewindow" : true
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "498b737e-4bfc-a451-dcb4-64030da8dccf"
+        }
+      },
+      "states" : {
+        "default" : {
+          "name" : "C5087 风电叶片在线监测11#（SonoEdge）",
+          "root" : true,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "bc3d6764-9d53-f084-f8f2-32a13348fe9a" : {
+                  "sizeX" : 12,
+                  "sizeY" : 6,
+                  "row" : 0,
+                  "col" : 0
+                },
+                "feaa0397-bcf3-c328-a5a2-6c406ec40d3a" : {
+                  "sizeX" : 12,
+                  "sizeY" : 6,
+                  "row" : 0,
+                  "col" : 12
+                },
+                "ae75502b-17cc-9587-3318-410f36bcaf06" : {
+                  "sizeX" : 12,
+                  "sizeY" : 8,
+                  "row" : 6,
+                  "col" : 0
+                },
+                "e90127fd-c215-2b2b-46ed-f2569023c5b2" : {
+                  "sizeX" : 12,
+                  "sizeY" : 5,
+                  "row" : 6,
+                  "col" : 12
+                },
+                "498b737e-4bfc-a451-dcb4-64030da8dccf" : {
+                  "sizeX" : 12,
+                  "sizeY" : 3,
+                  "row" : 11,
+                  "col" : 12
+                }
+              },
+              "gridSettings" : {
+                "backgroundColor" : "#eeeeee",
+                "columns" : 24,
+                "margin" : 0,
+                "outerMargin" : true,
+                "backgroundSizeMode" : "100%",
+                "autoFillHeight" : false,
+                "backgroundImageUrl" : null,
+                "mobileAutoFillHeight" : false,
+                "mobileRowHeight" : 70
+              }
+            }
+          }
+        },
+        "通道1" : {
+          "name" : "通道1",
+          "root" : false,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "5c2ed9d0-afa0-8dfa-ceb7-508d31fe5bfd" : {
+                  "sizeX" : 11,
+                  "sizeY" : 13,
+                  "row" : 0,
+                  "col" : 0
+                },
+                "581147ef-a6bc-ce05-1b5a-d97084efa892" : {
+                  "sizeX" : 13,
+                  "sizeY" : 11,
+                  "row" : 2,
+                  "col" : 11
+                },
+                "ae00b514-7ef7-95e5-b58d-da94f5a1b995" : {
+                  "sizeX" : 6,
+                  "sizeY" : 2,
+                  "row" : 0,
+                  "col" : 11
+                },
+                "0e3da89f-795d-b811-2dcd-193e1f72916d" : {
+                  "sizeX" : 7,
+                  "sizeY" : 2,
+                  "row" : 0,
+                  "col" : 17
+                }
+              },
+              "gridSettings" : {
+                "backgroundColor" : "#eeeeee",
+                "columns" : 24,
+                "margin" : 10,
+                "outerMargin" : true,
+                "backgroundSizeMode" : "100%"
+              }
+            }
+          }
+        },
+        "通道2" : {
+          "name" : "通道2",
+          "root" : false,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "9a0ac169-ca1b-c2e8-26be-bda3bf774edb" : {
+                  "sizeX" : 13,
+                  "sizeY" : 10,
+                  "row" : 2,
+                  "col" : 11
+                },
+                "0d7b3e7d-1192-baf1-c786-4103a32d94e2" : {
+                  "sizeX" : 7,
+                  "sizeY" : 2,
+                  "row" : 0,
+                  "col" : 17
+                },
+                "72406a5e-c3a5-1ebf-1651-687ba68a756e" : {
+                  "sizeX" : 6,
+                  "sizeY" : 2,
+                  "row" : 0,
+                  "col" : 11
+                },
+                "7a5fc3fd-ad83-24c0-b4e3-85cff17d2a1e" : {
+                  "sizeX" : 11,
+                  "sizeY" : 12,
+                  "row" : 0,
+                  "col" : 0
+                }
+              },
+              "gridSettings" : {
+                "backgroundColor" : "#eeeeee",
+                "columns" : 24,
+                "margin" : 0,
+                "outerMargin" : true,
+                "backgroundSizeMode" : "100%",
+                "autoFillHeight" : false,
+                "backgroundImageUrl" : null,
+                "mobileAutoFillHeight" : false,
+                "mobileRowHeight" : 70
+              }
+            }
+          }
+        },
+        "通道3" : {
+          "name" : "通道3",
+          "root" : false,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "dca67dc1-bb71-ff9e-f3e2-79fe652b2196" : {
+                  "sizeX" : 11,
+                  "sizeY" : 13,
+                  "row" : 0,
+                  "col" : 0
+                },
+                "8b4b82fb-097a-080a-e49d-2ed3775a79df" : {
+                  "sizeX" : 6,
+                  "sizeY" : 2,
+                  "row" : 0,
+                  "col" : 11
+                },
+                "1b374b67-900c-48d3-d8b8-8450d57f6ac5" : {
+                  "sizeX" : 7,
+                  "sizeY" : 2,
+                  "row" : 0,
+                  "col" : 17
+                },
+                "c29723af-a431-cf30-cd9b-34e17a2654d9" : {
+                  "sizeX" : 13,
+                  "sizeY" : 11,
+                  "row" : 2,
+                  "col" : 11
+                }
+              },
+              "gridSettings" : {
+                "backgroundColor" : "#eeeeee",
+                "columns" : 24,
+                "margin" : 10,
+                "outerMargin" : true,
+                "backgroundSizeMode" : "100%"
+              }
+            }
+          }
+        },
+        "通道4" : {
+          "name" : "通道4",
+          "root" : false,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "611d1ea3-6f7c-d49e-344d-bfc947f0c7ad" : {
+                  "sizeX" : 11,
+                  "sizeY" : 13,
+                  "row" : 0,
+                  "col" : 0
+                },
+                "6f0365f5-0230-b7aa-b60c-e3fa4b49d1c1" : {
+                  "sizeX" : 7,
+                  "sizeY" : 2,
+                  "row" : 0,
+                  "col" : 11
+                },
+                "11d7520e-71d0-cb64-c9ba-d6faad5f785a" : {
+                  "sizeX" : 7,
+                  "sizeY" : 2,
+                  "row" : 0,
+                  "col" : 18
+                },
+                "96797a45-76a4-972a-7f9a-37de58bd7804" : {
+                  "sizeX" : 14,
+                  "sizeY" : 11,
+                  "row" : 2,
+                  "col" : 11
+                }
+              },
+              "gridSettings" : {
+                "backgroundColor" : "#eeeeee",
+                "columns" : 24,
+                "margin" : 10,
+                "outerMargin" : true,
+                "backgroundSizeMode" : "100%"
+              }
+            }
+          }
+        },
+        "通道5" : {
+          "name" : "通道5",
+          "root" : false,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "75bdac77-b2a1-c163-960c-d61cbf359c09" : {
+                  "sizeX" : 11,
+                  "sizeY" : 12,
+                  "row" : 0,
+                  "col" : 0
+                },
+                "56c856fa-eb79-0beb-b760-810f12932166" : {
+                  "sizeX" : 6,
+                  "sizeY" : 2,
+                  "row" : 0,
+                  "col" : 11
+                },
+                "3546e5dc-f05a-0d28-1779-2d5d710c4872" : {
+                  "sizeX" : 7,
+                  "sizeY" : 2,
+                  "row" : 0,
+                  "col" : 17
+                },
+                "31fde698-9dc5-f91d-c055-ad2129d6e383" : {
+                  "sizeX" : 13,
+                  "sizeY" : 10,
+                  "row" : 2,
+                  "col" : 11
+                }
+              },
+              "gridSettings" : {
+                "backgroundColor" : "#eeeeee",
+                "columns" : 24,
+                "margin" : 10,
+                "outerMargin" : true,
+                "backgroundSizeMode" : "100%"
+              }
+            }
+          }
+        },
+        "通道6" : {
+          "name" : "通道6",
+          "root" : false,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "2e1e0458-1a26-3b69-ca21-a7cc10575af8" : {
+                  "sizeX" : 12,
+                  "sizeY" : 12,
+                  "row" : 0,
+                  "col" : 0
+                },
+                "1c7c16a8-02b9-84f7-a4fc-019531650d10" : {
+                  "sizeX" : 6,
+                  "sizeY" : 2,
+                  "row" : 0,
+                  "col" : 12
+                },
+                "2d662faf-aa83-cc4a-fd66-59ab05df717e" : {
+                  "sizeX" : 7,
+                  "sizeY" : 2,
+                  "row" : 0,
+                  "col" : 18
+                },
+                "149236e6-0d77-44d3-63d6-1b8f97d8f65a" : {
+                  "sizeX" : 13,
+                  "sizeY" : 10,
+                  "row" : 2,
+                  "col" : 12
+                }
+              },
+              "gridSettings" : {
+                "backgroundColor" : "#eeeeee",
+                "columns" : 24,
+                "margin" : 10,
+                "outerMargin" : true,
+                "backgroundSizeMode" : "100%"
+              }
+            }
+          }
+        }
+      },
+      "entityAliases" : {
+        "3960fe06-bf03-e641-92b9-aa9dfe920c51" : {
+          "id" : "3960fe06-bf03-e641-92b9-aa9dfe920c51",
+          "alias" : "报警源",
+          "filter" : {
+            "type" : "entityList",
+            "resolveMultiple" : true,
+            "entityType" : "DEVICE",
+            "entityList" : [ "a0929110-f960-11ed-b614-7712959c0b1d", "aaf8eb90-f960-11ed-b614-7712959c0b1d", "b1b4b4a0-f960-11ed-b614-7712959c0b1d", "ba6d1100-f960-11ed-b614-7712959c0b1d", "c72b3e30-f960-11ed-b614-7712959c0b1d", "d1ff0080-f960-11ed-b614-7712959c0b1d" ]
+          }
+        },
+        "1e9d389c-2fbe-61b6-957d-d7de399d2c0d" : {
+          "id" : "1e9d389c-2fbe-61b6-957d-d7de399d2c0d",
+          "alias" : "通道一",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : false,
+            "singleEntity" : {
+              "entityType" : "DEVICE",
+              "id" : "a0929110-f960-11ed-b614-7712959c0b1d"
+            }
+          }
+        },
+        "bb0ed3ad-d6bf-3ed8-b48b-c140889b628e" : {
+          "id" : "bb0ed3ad-d6bf-3ed8-b48b-c140889b628e",
+          "alias" : "通道二",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : false,
+            "singleEntity" : {
+              "entityType" : "DEVICE",
+              "id" : "aaf8eb90-f960-11ed-b614-7712959c0b1d"
+            }
+          }
+        },
+        "84aea5b0-f8fc-b29b-99ba-1c2ea23edffc" : {
+          "id" : "84aea5b0-f8fc-b29b-99ba-1c2ea23edffc",
+          "alias" : "通道三",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : false,
+            "singleEntity" : {
+              "entityType" : "DEVICE",
+              "id" : "b1b4b4a0-f960-11ed-b614-7712959c0b1d"
+            }
+          }
+        },
+        "317ed15e-0812-e9c7-6239-bacc6a618ba6" : {
+          "id" : "317ed15e-0812-e9c7-6239-bacc6a618ba6",
+          "alias" : "通道四",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : false,
+            "singleEntity" : {
+              "entityType" : "DEVICE",
+              "id" : "ba6d1100-f960-11ed-b614-7712959c0b1d"
+            }
+          }
+        },
+        "574d1fd5-1fef-0185-5686-5f4d533c44cf" : {
+          "id" : "574d1fd5-1fef-0185-5686-5f4d533c44cf",
+          "alias" : "通道五",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : false,
+            "singleEntity" : {
+              "entityType" : "DEVICE",
+              "id" : "c72b3e30-f960-11ed-b614-7712959c0b1d"
+            }
+          }
+        },
+        "39cd30b2-c445-0f1b-5084-93fca452609d" : {
+          "id" : "39cd30b2-c445-0f1b-5084-93fca452609d",
+          "alias" : "通道六",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : false,
+            "singleEntity" : {
+              "entityType" : "DEVICE",
+              "id" : "d1ff0080-f960-11ed-b614-7712959c0b1d"
+            }
+          }
+        }
+      },
+      "filters" : { },
+      "timewindow" : {
+        "hideInterval" : false,
+        "hideLastInterval" : false,
+        "hideQuickInterval" : false,
+        "hideAggregation" : false,
+        "hideAggInterval" : false,
+        "hideTimezone" : false,
+        "selectedTab" : 0,
+        "realtime" : {
+          "realtimeType" : 0,
+          "timewindowMs" : 36000000,
+          "quickInterval" : "CURRENT_DAY",
+          "interval" : 120000
+        },
+        "aggregation" : {
+          "type" : "AVG",
+          "limit" : 25000
+        },
+        "timezone" : null
+      },
+      "settings" : {
+        "stateControllerId" : "entity",
+        "showTitle" : false,
+        "showDashboardsSelect" : true,
+        "showEntitiesSelect" : true,
+        "showDashboardTimewindow" : true,
+        "showDashboardExport" : true,
+        "toolbarAlwaysOpen" : true,
+        "titleColor" : "rgba(0,0,0,0.870588)",
+        "showDashboardLogo" : false,
+        "dashboardLogoUrl" : null,
+        "hideToolbar" : false,
+        "showFilters" : true,
+        "showUpdateDashboardImage" : true,
+        "dashboardCss" : ""
+      }
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "DASHBOARD",
+      "id" : "64e776b0-1a0a-11ee-84c7-59378f85ce5f"
+    },
+    "image" : null,
+    "mobileHide" : false,
+    "mobileOrder" : null,
+    "name" : "C5087 风电叶片在线监测11#（SonoEdge)",
+    "title" : "C5087 风电叶片在线监测11#（SonoEdge)"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

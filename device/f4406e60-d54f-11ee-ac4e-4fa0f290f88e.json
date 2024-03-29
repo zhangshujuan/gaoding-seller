@@ -1,0 +1,118 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "gateway" : false,
+      "overwriteActivityTime" : false,
+      "description" : ""
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "2b3aa8c0-1a04-11ee-af0b-3bb8967337dd"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "f4406e60-d54f-11ee-ac4e-4fa0f290f88e"
+    },
+    "label" : "园区测试",
+    "name" : "园区测试（23BCB017）",
+    "softwareId" : null,
+    "type" : "default"
+  },
+  "credentials" : {
+    "credentialsId" : "brKd0prDp2hUggZAqELZ",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1711095066367,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenAppKey",
+      "lastUpdateTs" : 1709025708410,
+      "longValue" : null,
+      "strValue" : "f0a98b14a4d840b183ab9ddb87332689"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenAppSecre",
+      "lastUpdateTs" : 1709025144576,
+      "longValue" : null,
+      "strValue" : "35e38712b2cc6cea5ed3f58e50bb878d"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenChannelNo",
+      "lastUpdateTs" : 1709025179277,
+      "longValue" : null,
+      "strValue" : "4"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "ezopenDeviceSerial",
+      "lastUpdateTs" : 1709025199093,
+      "longValue" : null,
+      "strValue" : "AF5000458"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1711095066367,
+      "longValue" : 1711095066367,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1711094443388,
+      "longValue" : 1711094441538,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : "[{\"name\":\"杭州兆华电子股份有限公司\",\"lng\":119.93633605800855,\"lat\":30.25227413418227,\"isDefault\":false},{\"name\":\"余杭中泰工业园\",\"lng\":119.93616762572529,\"lat\":30.252266461336117,\"isDefault\":false},{\"name\":\"公司\",\"lng\":119.93619906641814,\"lat\":30.252254762559318,\"isDefault\":true}]",
+      "key" : "lockPointList",
+      "lastUpdateTs" : 1709089574004,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "splOffsetValue",
+      "lastUpdateTs" : 1709025215863,
+      "longValue" : null,
+      "strValue" : "-25"
+    } ],
+    "SHARED_SCOPE" : [ ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "entityType" : "WIDGETS_BUNDLE",
+  "entity" : {
+    "alias" : "alarmvue",
+    "description" : null,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "WIDGETS_BUNDLE",
+      "id" : "5304a670-dc42-11ee-ac4e-4fa0f290f88e"
+    },
+    "image" : null,
+    "name" : "alarmVue",
+    "title" : "alarmVue"
+  },
+  "widgets" : [ ],
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

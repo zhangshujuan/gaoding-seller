@@ -8,7 +8,7 @@
     },
     "customerId" : {
       "entityType" : "CUSTOMER",
-      "id" : "13814000-1dd2-11b2-8080-808080808080"
+      "id" : "c741a020-4b14-11ee-a460-9f3a6c181add"
     },
     "deviceData" : {
       "configuration" : {
@@ -26,15 +26,15 @@
     "firmwareId" : null,
     "id" : {
       "entityType" : "DEVICE",
-      "id" : "edf009d0-ecd3-11ee-ac4e-4fa0f290f88e"
+      "id" : "13677d70-4acb-11ee-a460-9f3a6c181add"
     },
     "label" : "",
-    "name" : "DHT22",
+    "name" : "第四组噪声溯源",
     "softwareId" : null,
     "type" : "default"
   },
   "credentials" : {
-    "credentialsId" : "Ufdh69Thteo79taKRAPJ",
+    "credentialsId" : "rLS1lvvBWL4ARpiOjduU",
     "credentialsType" : "ACCESS_TOKEN",
     "credentialsValue" : null
   },
@@ -45,7 +45,7 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "active",
-      "lastUpdateTs" : 1711612147358,
+      "lastUpdateTs" : 1693900517796,
       "longValue" : null,
       "strValue" : null
     }, {
@@ -53,17 +53,33 @@
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "inactivityAlarmTime",
-      "lastUpdateTs" : 1711612147358,
-      "longValue" : 1711612147358,
+      "lastUpdateTs" : 1693900517796,
+      "longValue" : 1693900517795,
       "strValue" : null
     }, {
       "booleanValue" : null,
       "doubleValue" : null,
       "jsonValue" : null,
       "key" : "lastActivityTime",
-      "lastUpdateTs" : 1711611532389,
-      "longValue" : 1711611531402,
+      "lastUpdateTs" : 1693899896170,
+      "longValue" : 1693899894338,
       "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "latitude",
+      "lastUpdateTs" : 1693892975125,
+      "longValue" : null,
+      "strValue" : "30.246968266813166"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "longitude",
+      "lastUpdateTs" : 1693892985926,
+      "longValue" : null,
+      "strValue" : "119.92961168289185"
     } ],
     "SHARED_SCOPE" : [ ]
   }

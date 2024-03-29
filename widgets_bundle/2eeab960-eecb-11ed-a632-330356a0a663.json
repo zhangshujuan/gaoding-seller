@@ -1,0 +1,141 @@
+{
+  "entityType" : "WIDGETS_BUNDLE",
+  "entity" : {
+    "alias" : "aaa",
+    "description" : null,
+    "externalId" : {
+      "entityType" : "WIDGETS_BUNDLE",
+      "id" : "2eeab960-eecb-11ed-a632-330356a0a663"
+    },
+    "id" : {
+      "entityType" : "WIDGETS_BUNDLE",
+      "id" : "2eeab960-eecb-11ed-a632-330356a0a663"
+    },
+    "image" : null,
+    "name" : "RPC",
+    "title" : "RPC"
+  },
+  "widgets" : [ {
+    "alias" : "doublerpc",
+    "name" : "doubleRPC",
+    "image" : null,
+    "description" : null,
+    "descriptor" : {
+      "type" : "timeseries",
+      "sizeX" : 8,
+      "sizeY" : 5,
+      "resources" : [ ],
+      "templateHtml" : "<button id=\"rpcBtn\" type=\"button\">Click Me!</button>",
+      "templateCss" : ".legend {\n    font-size: 13px;\n    line-height: 10px;\n}\n\n.legend table { \n    border-spacing: 0px;\n    border-collapse: separate;\n}\n\n.mouse-events .flot-overlay {\n    cursor: crosshair; \n}\n\n",
+      "controllerScript" : "\n\nself.onInit = function() {\n    $(\"#rpcBtn\").click(function() {\n        var rpcwavcutparamMethod = 'doubleRPC';\n        var rpcParams = 'none';\n        // var timeout = self.ctx.settings\n        //     .requestTimeout;\n        var timeout = 5000\n        console.log('senddoublerpc')\n        var commandObservablewavcutparam;\n\n        commandObservablewavcutparam = self.ctx\n            .controlApi\n            .sendOneWayCommand(rpcwavcutparamMethod,\n                rpcParams, timeout);\n                \n        commandObservablewavcutparam.subscribe(function(response){\n            console.log('response',response)\n        },\n        function(reject){\n            console.log('reject',reject)\n        })\n    })\n    \n}",
+      "settingsSchema" : "{}",
+      "dataKeySettingsSchema" : "{}",
+      "latestDataKeySettingsSchema" : "{}",
+      "settingsDirective" : "tb-flot-line-widget-settings",
+      "dataKeySettingsDirective" : "tb-flot-line-key-settings",
+      "latestDataKeySettingsDirective" : "tb-flot-latest-key-settings",
+      "defaultConfig" : "{\"datasources\":[{\"type\":\"function\",\"name\":\"function\",\"dataKeys\":[{\"name\":\"f(x)\",\"type\":\"function\",\"label\":\"First\",\"color\":\"#2196f3\",\"settings\":{\"showLines\":true,\"fillLines\":true,\"showPoints\":false},\"_hash\":0.8587686344902596,\"funcBody\":\"var value = prevValue + Math.random() * 100 - 50;\\nvar multiplier = Math.pow(10, 2 || 0);\\nvar value = Math.round(value * multiplier) / multiplier;\\nif (value < -1000) {\\n\\tvalue = -1000;\\n} else if (value > 1000) {\\n\\tvalue = 1000;\\n}\\nreturn value;\"},{\"name\":\"f(x)\",\"type\":\"function\",\"label\":\"Second\",\"color\":\"#ffc107\",\"settings\":{\"showLines\":true,\"fillLines\":false,\"showPoints\":false},\"_hash\":0.12775350966079668,\"funcBody\":\"var value = prevValue + Math.random() * 100 - 50;\\nvar multiplier = Math.pow(10, 2 || 0);\\nvar value = Math.round(value * multiplier) / multiplier;\\nif (value < -1000) {\\n\\tvalue = -1000;\\n} else if (value > 1000) {\\n\\tvalue = 1000;\\n}\\nreturn value;\"}]}],\"timewindow\":{\"realtime\":{\"timewindowMs\":60000}},\"showTitle\":true,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"8px\",\"settings\":{\"shadowSize\":4,\"fontColor\":\"#545454\",\"fontSize\":10,\"xaxis\":{\"showLabels\":true,\"color\":\"#545454\"},\"yaxis\":{\"showLabels\":true,\"color\":\"#545454\"},\"grid\":{\"color\":\"#545454\",\"tickColor\":\"#DDDDDD\",\"verticalLines\":true,\"horizontalLines\":true,\"outlineWidth\":1},\"legend\":{\"show\":true,\"position\":\"nw\",\"backgroundColor\":\"#f0f0f0\",\"backgroundOpacity\":0.85,\"labelBoxBorderColor\":\"rgba(1, 1, 1, 0.45)\"},\"decimals\":1,\"stack\":false,\"tooltipIndividual\":false},\"title\":\"doubleRPC\",\"dropShadow\":true,\"enableFullscreen\":true,\"titleStyle\":{\"fontSize\":\"16px\",\"fontWeight\":400},\"mobileHeight\":null}"
+    },
+    "bundleAlias" : "aaa",
+    "createdTime" : 1688517087490,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "47799e20-1acb-11ee-84c7-59378f85ce5f"
+    },
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "2b2f3710-1a04-11ee-af0b-3bb8967337dd"
+    }
+  }, {
+    "alias" : "restapi",
+    "name" : "restAPI",
+    "image" : null,
+    "description" : null,
+    "descriptor" : {
+      "type" : "timeseries",
+      "sizeX" : 8,
+      "sizeY" : 5,
+      "resources" : [ ],
+      "templateHtml" : "<button id=\"reset-button\">Reset Device</button>",
+      "templateCss" : ".legend {\n    font-size: 13px;\n    line-height: 10px;\n}\n\n.legend table { \n    border-spacing: 0px;\n    border-collapse: separate;\n}\n\n.mouse-events .flot-overlay {\n    cursor: crosshair; \n}\n\n",
+      "controllerScript" : "self.onInit = function() {\n    $('#reset-button').click(function() {\n        var url =\n            'http://192.168.116.100:8080/api/plugins/rpc/oneway/e1e2ea40-13e4-11ee-8d5c-394507dab0d7';\n        var payload = {\n            method: 'restRPC',\n            params: 'any'\n        };\n        var username = 'tenant@thingsboard.or';\n        var password = 'tenant';\n        var auth = 'Basic ' + btoa(username + ':' + password);\n        var jwtToken = localStorage.getItem('jwt_token');\n        var bearer = 'Bearer ' + jwtToken;\n        var headers = {\n            'Content-Type': 'application/json',\n            'Authorization': auth,\n            'X-Authorization': bearer\n        };\n        $.ajax({\n            url: url,\n            type: 'POST',\n            headers: headers,\n            data: JSON.stringify(\n                payload),\n            success: function(\n            response) {\n                console.log(\n                    response);\n            },\n            error: function(xhr, status,\n                error) {\n                console.error(xhr\n                    .responseText\n                    );\n            }\n        });\n        \n    })\n}",
+      "settingsSchema" : "{}",
+      "dataKeySettingsSchema" : "{}",
+      "latestDataKeySettingsSchema" : "{}",
+      "settingsDirective" : "tb-flot-line-widget-settings",
+      "dataKeySettingsDirective" : "tb-flot-line-key-settings",
+      "latestDataKeySettingsDirective" : "tb-flot-latest-key-settings",
+      "defaultConfig" : "{\"datasources\":[{\"type\":\"function\",\"name\":\"function\",\"dataKeys\":[{\"name\":\"f(x)\",\"type\":\"function\",\"label\":\"First\",\"color\":\"#2196f3\",\"settings\":{\"showLines\":true,\"fillLines\":true,\"showPoints\":false},\"_hash\":0.8587686344902596,\"funcBody\":\"var value = prevValue + Math.random() * 100 - 50;\\nvar multiplier = Math.pow(10, 2 || 0);\\nvar value = Math.round(value * multiplier) / multiplier;\\nif (value < -1000) {\\n\\tvalue = -1000;\\n} else if (value > 1000) {\\n\\tvalue = 1000;\\n}\\nreturn value;\"},{\"name\":\"f(x)\",\"type\":\"function\",\"label\":\"Second\",\"color\":\"#ffc107\",\"settings\":{\"showLines\":true,\"fillLines\":false,\"showPoints\":false},\"_hash\":0.12775350966079668,\"funcBody\":\"var value = prevValue + Math.random() * 100 - 50;\\nvar multiplier = Math.pow(10, 2 || 0);\\nvar value = Math.round(value * multiplier) / multiplier;\\nif (value < -1000) {\\n\\tvalue = -1000;\\n} else if (value > 1000) {\\n\\tvalue = 1000;\\n}\\nreturn value;\"}]}],\"timewindow\":{\"realtime\":{\"timewindowMs\":60000}},\"showTitle\":true,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"8px\",\"settings\":{\"shadowSize\":4,\"fontColor\":\"#545454\",\"fontSize\":10,\"xaxis\":{\"showLabels\":true,\"color\":\"#545454\"},\"yaxis\":{\"showLabels\":true,\"color\":\"#545454\"},\"grid\":{\"color\":\"#545454\",\"tickColor\":\"#DDDDDD\",\"verticalLines\":true,\"horizontalLines\":true,\"outlineWidth\":1},\"legend\":{\"show\":true,\"position\":\"nw\",\"backgroundColor\":\"#f0f0f0\",\"backgroundOpacity\":0.85,\"labelBoxBorderColor\":\"rgba(1, 1, 1, 0.45)\"},\"decimals\":1,\"stack\":false,\"tooltipIndividual\":false},\"title\":\"restAPI\",\"dropShadow\":true,\"enableFullscreen\":true,\"titleStyle\":{\"fontSize\":\"16px\",\"fontWeight\":400},\"mobileHeight\":null}"
+    },
+    "bundleAlias" : "aaa",
+    "createdTime" : 1688517087494,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "477a3a60-1acb-11ee-84c7-59378f85ce5f"
+    },
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "2b2f3710-1a04-11ee-af0b-3bb8967337dd"
+    }
+  }, {
+    "alias" : "rpc_",
+    "name" : "RPC类型控件",
+    "image" : null,
+    "description" : null,
+    "descriptor" : {
+      "type" : "rpc",
+      "sizeX" : 4,
+      "sizeY" : 2,
+      "resources" : [ ],
+      "templateHtml" : "<button id=\"rpccBtn\" type=\"button\">Click Me!</button>",
+      "templateCss" : ".error {\n    font-size: 14px !important;\n    color: maroon;/*rgb(250,250,250);*/\n    background-color: transparent;\n    padding: 6px;\n}\n\n.error span {\n    margin: auto;\n}\n\n.gpio-panel {\n    padding-top: 10px;\n    white-space: nowrap;\n}\n\n.gpio-panel section[fxflex] {\n    min-width: 0px;\n}\n\n\n.switch-panel {\n    margin: 0;\n    height: 32px;\n    width: 66px;\n    min-width: 66px;\n}\n\n.switch-panel mat-slide-toggle {\n    margin: 0;\n    width: 36px;\n    min-width: 36px;\n}\n\n.switch-panel.col-0 mat-slide-toggle {\n    margin-left: 8px;\n    margin-right: 4px;\n}\n\n.switch-panel.col-1 mat-slide-toggle {\n    margin-left: 4px;\n    margin-right: 8px;\n}\n\n.gpio-row {\n    height: 32px;\n}\n\n.pin {\n    margin-top: auto;\n    margin-bottom: auto;\n    color: white;\n    font-size: 12px;\n    width: 16px;\n    min-width: 16px;\n}\n\n.switch-panel.col-0 .pin {\n    margin-left: auto;\n    padding-left: 2px;\n    text-align: right;\n}\n\n.switch-panel.col-1 .pin {\n    margin-right: auto;\n    \n    text-align: left;\n}\n\n.gpio-left-label {\n    margin-right: 8px;\n}\n\n.gpio-right-label {\n    margin-left: 8px;\n}",
+      "controllerScript" : "self.onInit = function() {\n    $(\"#rpccBtn\").click(function() {\n        const requestBody = {\n            method: 'specificRpc',\n            params: 'any',\n            timeout: '5000'\n        };\n        var cmdServe;\n        const $injector = self.ctx.$scope\n            .$injector;\n        const deviceService = $injector.get(self\n            .ctx.servicesMap.get(\n                'deviceService'));\n        console.log('self.ctx',self.ctx)\n        cmdServe = deviceService\n            .sendOneWayCommand(\n                'e1e2ea40-13e4-11ee-8d5c-394507dab0d7',\n                requestBody);\n        cmdServe.subscribe(function(request) {\n            console.log('response',\n                response)\n        }, function(reject) {\n            console.log('reject',\n                reject)\n        })\n    })\n\n}",
+      "settingsSchema" : "",
+      "dataKeySettingsSchema" : "{}\n",
+      "settingsDirective" : "tb-gpio-control-widget-settings",
+      "defaultConfig" : "{\"targetDeviceAliases\":[],\"showTitle\":true,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"0px\",\"settings\":{\"parseGpioStatusFunction\":\"return body[pin] === true;\",\"gpioStatusChangeRequest\":{\"method\":\"setGpioStatus\",\"paramsBody\":\"{\\n   \\\"pin\\\": \\\"{$pin}\\\",\\n   \\\"enabled\\\": \\\"{$enabled}\\\"\\n}\"},\"requestTimeout\":500,\"switchPanelBackgroundColor\":\"#b71c1c\",\"gpioStatusRequest\":{\"method\":\"getGpioStatus\",\"paramsBody\":\"{}\"},\"gpioList\":[{\"pin\":1,\"label\":\"GPIO 1\",\"row\":0,\"col\":0,\"_uniqueKey\":0},{\"pin\":2,\"label\":\"GPIO 2\",\"row\":0,\"col\":1,\"_uniqueKey\":1},{\"pin\":3,\"label\":\"GPIO 3\",\"row\":1,\"col\":0,\"_uniqueKey\":2}]},\"title\":\"RPC类型控件\"}"
+    },
+    "bundleAlias" : "aaa",
+    "createdTime" : 1688517087489,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "47797710-1acb-11ee-84c7-59378f85ce5f"
+    },
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "2b2f3710-1a04-11ee-af0b-3bb8967337dd"
+    }
+  }, {
+    "alias" : "simplerpc",
+    "name" : "SimpleRPC",
+    "image" : null,
+    "description" : null,
+    "descriptor" : {
+      "type" : "rpc",
+      "sizeX" : 4,
+      "sizeY" : 2,
+      "resources" : [ ],
+      "templateHtml" : " <form #rpcForm=\"ngForm\" (submit)=\"sendCommand()\">\r\n     <div class=\"mat-content mat-padding\" fxLayout=\"column\">\r\n         <!--<mat-form-field class=\"mat-block\">-->\r\n         <!--  <mat-label>RPC method</mat-label>-->\r\n         <!--  <input matInput required name=\"rpcMethod\" #rpcMethodField=\"ngModel\" [(ngModel)]=\"rpcMethod\"/>-->\r\n         <!--  <mat-error *ngIf=\"rpcMethodField.hasError('required')\">-->\r\n         <!--    RPC method name is required.-->\r\n         <!--  </mat-error>-->\r\n         <!--</mat-form-field>-->\r\n         <label>HDT（撞击定义时间，us）</label>\r\n         <mat-form-field class=\"mat-block\">\r\n             <mat-label>HDT</mat-label>\r\n             <input matInput required name=\"HDT\"\r\n                 #rpcParamsField=\"ngModel\"\r\n                 [(ngModel)]=\"HDT\" />\r\n             <mat-error\r\n                 *ngIf=\"rpcParamsField.hasError('required')\">\r\n                 RPC params is required.\r\n             </mat-error>\r\n         </mat-form-field>\r\n         <label>HLT（撞击闭锁时间，us）</label>\r\n         <mat-form-field class=\"mat-block\">\r\n             <mat-label>HLT</mat-label>\r\n             <input matInput required name=\"HLT\"\r\n                 #rpcParamsField=\"ngModel\"\r\n                 [(ngModel)]=\"HLT\" />\r\n             <mat-error\r\n                 *ngIf=\"rpcParamsField.hasError('required')\">\r\n                 RPC params is required.\r\n             </mat-error>\r\n         </mat-form-field>\r\n         <label>PDT（峰值定义时间，us）</label>\r\n         <mat-form-field class=\"mat-block\">\r\n             <mat-label>PDT</mat-label>\r\n             <input matInput required name=\"PDT\"\r\n                 #rpcParamsField=\"ngModel\"\r\n                 [(ngModel)]=\"PDT\" />\r\n             <mat-error\r\n                 *ngIf=\"rpcParamsField.hasError('required')\">\r\n                 RPC params is required.\r\n             </mat-error>\r\n         </mat-form-field>\r\n         <label>最大持续时间（ms）</label>\r\n         <mat-form-field class=\"mat-block\">\r\n             <mat-label>最大持续时间</mat-label>\r\n             <input matInput required name=\"maxduring\"\r\n                 #rpcParamsField=\"ngModel\"\r\n                 [(ngModel)]=\"maxduring\" />\r\n             <mat-error\r\n                 *ngIf=\"rpcParamsField.hasError('required')\">\r\n                 RPC params is required.\r\n             </mat-error>\r\n         </mat-form-field>\r\n         <label>振铃门槛值（0-100）</label>\r\n         <mat-form-field class=\"mat-block\">\r\n             <mat-label>振铃门槛值</mat-label>\r\n             <input matInput required name=\"threshold\"\r\n                 #rpcParamsField=\"ngModel\"\r\n                 [(ngModel)]=\"threshold\" />\r\n             <mat-error\r\n                 *ngIf=\"rpcParamsField.hasError('required')\">\r\n                 RPC params is required.\r\n             </mat-error>\r\n         </mat-form-field>\r\n\r\n         <button\r\n             [disabled]=\"rpcForm.invalid || !rpcForm.dirty\"\r\n             mat-raised-button color=\"primary\"\r\n             type=\"submit\">\r\n             设置参数\r\n         </button>\r\n         <div>\r\n             <label>RPC command response</label>\r\n             <div style=\"width: 100%; height: 100px; border: solid 2px gray\"\r\n                 [innerHTML]=\"rpcCommandResponse\">\r\n             </div>\r\n         </div>\r\n     </div>\r\n </form>",
+      "templateCss" : ".error {\n    font-size: 14px !important;\n    color: maroon;/*rgb(250,250,250);*/\n    background-color: transparent;\n    padding: 6px;\n}\n\n.error span {\n    margin: auto;\n}\n\n.gpio-panel {\n    padding-top: 10px;\n    white-space: nowrap;\n}\n\n.gpio-panel section[fxflex] {\n    min-width: 0px;\n}\n\n\n.switch-panel {\n    margin: 0;\n    height: 32px;\n    width: 66px;\n    min-width: 66px;\n}\n\n.switch-panel mat-slide-toggle {\n    margin: 0;\n    width: 36px;\n    min-width: 36px;\n}\n\n.switch-panel.col-0 mat-slide-toggle {\n    margin-left: 8px;\n    margin-right: 4px;\n}\n\n.switch-panel.col-1 mat-slide-toggle {\n    margin-left: 4px;\n    margin-right: 8px;\n}\n\n.gpio-row {\n    height: 32px;\n}\n\n.pin {\n    margin-top: auto;\n    margin-bottom: auto;\n    color: white;\n    font-size: 12px;\n    width: 16px;\n    min-width: 16px;\n}\n\n.switch-panel.col-0 .pin {\n    margin-left: auto;\n    padding-left: 2px;\n    text-align: right;\n}\n\n.switch-panel.col-1 .pin {\n    margin-right: auto;\n    \n    text-align: left;\n}\n\n.gpio-left-label {\n    margin-right: 8px;\n}\n\n.gpio-right-label {\n    margin-left: 8px;\n}",
+      "controllerScript" : "self.onInit = function() {\r\n\r\n    var rpcwavcutparamMethod = 'getwavcutparam';\r\n    var rpcParams = 'none';\r\n    // var timeout = self.ctx.settings\r\n    //     .requestTimeout;\r\n    var timeout =5000\r\n    console.log('timeout',timeout)\r\n    var commandObservablewavcutparam;\r\n\r\n    commandObservablewavcutparam = self.ctx.controlApi\r\n        .sendTwoWayCommand(rpcwavcutparamMethod,\r\n            rpcParams, timeout);\r\n\r\n    commandObservablewavcutparam.subscribe(\r\n        function(response) {\r\n            self.ctx.$scope.rpcCommandResponse =\r\n                \"Response from device:<br>\";\r\n            var res = JSON.stringify(response,\r\n                undefined, 2)\r\n            res = JSON.parse(res);\r\n            console.log(res)\r\n            if (res['result'] == 'ok') {\r\n                self.ctx.$scope.HDT = res['HDT']\r\n                self.ctx.$scope.HLT = res['HLT']\r\n                self.ctx.$scope.PDT = res['PDT']\r\n                self.ctx.$scope.maxduring = res[\r\n                    'duration']\r\n                self.ctx.$scope.threshold = res[\r\n                    'threshold']\r\n            } else {\r\n                self.ctx.$scope\r\n                    .rpcCommandResponse += '读取失败'\r\n            }\r\n            self.ctx.detectChanges();\r\n        },\r\n        function(rejection) {\r\n            self.ctx.$scope.rpcCommandResponse =\r\n                \"Failed to send command to the device:<br>\"\r\n            self.ctx.$scope.rpcCommandResponse +=\r\n                \"Status: \" + rejection.status +\r\n                \"<br>\";\r\n            self.ctx.$scope.rpcCommandResponse +=\r\n                \"Status text: '\" + rejection\r\n                .statusText + \"'\";\r\n            self.ctx.detectChanges();\r\n        }\r\n    );\r\n\r\n\r\n\r\n\r\n    self.ctx.$scope.sendCommand = function() {\r\n        var rpcMethod = 'setwavcutparam';\r\n        var rpcParams =\r\n            `${self.ctx.$scope.HDT};${self.ctx.$scope.HLT};${self.ctx.$scope.PDT};${self.ctx.$scope.maxduring};${self.ctx.$scope.threshold}`;\r\n        var timeout = self.ctx.settings\r\n            .requestTimeout;\r\n        // var oneWayElseTwoWay = self.ctx.settings.oneWayElseTwoWay ? true : false;\r\n        var oneWayElseTwoWay = false;\r\n\r\n        var commandObservable;\r\n        if (oneWayElseTwoWay) {\r\n            commandObservable = self.ctx.controlApi\r\n                .sendOneWayCommand(rpcMethod,\r\n                    rpcParams, timeout);\r\n        } else {\r\n            commandObservable = self.ctx.controlApi\r\n                .sendTwoWayCommand(rpcMethod,\r\n                    rpcParams, timeout);\r\n        }\r\n        commandObservable.subscribe(\r\n            function(response) {\r\n                if (oneWayElseTwoWay) {\r\n                    self.ctx.$scope\r\n                        .rpcCommandResponse =\r\n                        \"Command was successfully received by device.<br> No response body because of one way command mode.\";\r\n                } else {\r\n                    self.ctx.$scope\r\n                        .rpcCommandResponse =\r\n                        \"Response from device:<br>\";\r\n                    var res = JSON.stringify(\r\n                        response, undefined,\r\n                        2)\r\n                    res = JSON.parse(res);\r\n                    console.log('res',res)\r\n                    if (res['result'] == 'ok') {\r\n                        self.ctx.$scope\r\n                            .rpcCommandResponse +=\r\n                            '设置成功'\r\n                    } else {\r\n                        self.ctx.$scope\r\n                            .rpcCommandResponse +=\r\n                            '设置失败'\r\n                        self.ctx.$scope\r\n                            .rpcCommandResponse +=\r\n                            `${res['msg']}`\r\n                    }\r\n                }\r\n                self.ctx.detectChanges();\r\n            },\r\n            function(rejection) {\r\n                self.ctx.$scope\r\n                    .rpcCommandResponse =\r\n                    \"Failed to send command to the device:<br>\"\r\n                self.ctx.$scope\r\n                    .rpcCommandResponse +=\r\n                    \"Status: \" + rejection\r\n                    .status + \"<br>\";\r\n                self.ctx.$scope\r\n                    .rpcCommandResponse +=\r\n                    \"Status text: '\" + rejection\r\n                    .statusText + \"'\";\r\n                self.ctx.detectChanges();\r\n            }\r\n        );\r\n    }\r\n\r\n}\r\nself.onResize = function() {\r\n    var dom = self.ctx.$container;\r\n    dom.width(self.ctx.width);\r\n    dom.height(self.ctx.height);\r\n    \r\n    \r\n}",
+      "settingsSchema" : "{\r\n    \"schema\": {\r\n        \"type\": \"object\",\r\n        \"title\": \"Settings\",\r\n        \"properties\": {\r\n            \"oneWayElseTwoWay\": {\r\n                \"title\": \"Is One Way Command\",\r\n                \"type\": \"boolean\",\r\n                \"default\": true\r\n            },\r\n            \"requestTimeout\": {\r\n                \"title\": \"RPC request timeout\",\r\n                \"type\": \"number\",\r\n                \"default\": 3000\r\n            }\r\n        },\r\n        \"required\": []\r\n    },\r\n    \"form\": [\r\n        \"oneWayElseTwoWay\",\r\n        \"requestTimeout\"\r\n    ]\r\n} \r\n",
+      "dataKeySettingsSchema" : "{\r\n    \"schema\": {\r\n        \"type\": \"object\",\r\n        \"title\": \"Settings\",\r\n        \"properties\": {\r\n            \"oneWayElseTwoWay\": {\r\n                \"title\": \"Is One Way Command\",\r\n                \"type\": \"boolean\",\r\n                \"default\": true\r\n            },\r\n            \"requestTimeout\": {\r\n                \"title\": \"RPC request timeout\",\r\n                \"type\": \"number\",\r\n                \"default\": 500\r\n            }\r\n        },\r\n        \"required\": []\r\n    },\r\n    \"form\": [\r\n        \"oneWayElseTwoWay\",\r\n        \"requestTimeout\"\r\n    ]\r\n} \r\n",
+      "settingsDirective" : "tb-gpio-control-widget-settings",
+      "defaultConfig" : "{\"targetDeviceAliases\":[],\"showTitle\":true,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"0px\",\"settings\":{\"parseGpioStatusFunction\":\"return body[pin] === true;\",\"gpioStatusChangeRequest\":{\"method\":\"setGpioStatus\",\"paramsBody\":\"{\\n   \\\"pin\\\": \\\"{$pin}\\\",\\n   \\\"enabled\\\": \\\"{$enabled}\\\"\\n}\"},\"requestTimeout\":500,\"switchPanelBackgroundColor\":\"#b71c1c\",\"gpioStatusRequest\":{\"method\":\"getGpioStatus\",\"paramsBody\":\"{}\"},\"gpioList\":[{\"pin\":1,\"label\":\"GPIO 1\",\"row\":0,\"col\":0,\"_uniqueKey\":0},{\"pin\":2,\"label\":\"GPIO 2\",\"row\":0,\"col\":1,\"_uniqueKey\":1},{\"pin\":3,\"label\":\"GPIO 3\",\"row\":1,\"col\":0,\"_uniqueKey\":2}]},\"title\":\"SimpleRPC\"}"
+    },
+    "bundleAlias" : "aaa",
+    "createdTime" : 1688517087487,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "477928f0-1acb-11ee-84c7-59378f85ce5f"
+    },
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "2b2f3710-1a04-11ee-af0b-3bb8967337dd"
+    }
+  } ],
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

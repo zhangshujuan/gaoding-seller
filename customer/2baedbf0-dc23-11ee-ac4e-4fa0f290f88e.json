@@ -1,0 +1,27 @@
+{
+  "entityType" : "CUSTOMER",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "address" : "",
+    "address2" : "",
+    "city" : "",
+    "country" : "",
+    "email" : "",
+    "externalId" : null,
+    "id" : {
+      "entityType" : "CUSTOMER",
+      "id" : "2baedbf0-dc23-11ee-ac4e-4fa0f290f88e"
+    },
+    "name" : "Customer vue",
+    "phone" : "",
+    "state" : "",
+    "title" : "Customer vue",
+    "zip" : ""
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
